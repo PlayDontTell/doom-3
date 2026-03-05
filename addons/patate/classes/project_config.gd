@@ -39,7 +39,7 @@ func get_scene(core_scene : StringName) -> PackedScene:
 ## If false, saves are managed as a flat list of files.
 @export var has_save_slots : bool = false
 ## Encryption key for save files. Change this before shipping — never share it publicly.
-@export var SAVE_ENCRYPT_KEY : String = "&Fr4GMt8T!0n.5%eR52:r&/iPJKl3s?,nnr"
+@export var SAVE_ENCRYPT_KEY : String = ""
 ## File extension used for all save and settings files.
 @export var FILES_EXTENSION : String = ".data"
 ## Directory for internal binary files (settings, etc.).
