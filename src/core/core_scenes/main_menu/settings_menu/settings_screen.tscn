@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://budao5y6u8bsd" path="res://src/core/core_scenes/main_menu/settings_menu/setting_toggle.tscn" id="4_u4k1i"]
 [ext_resource type="Script" uid="uid://dvjgopdw7ubc1" path="res://addons/patate/classes/animated_button.gd" id="6_5g82o"]
 [ext_resource type="Script" uid="uid://byxo4p3pf4tho" path="res://src/core/core_scenes/main_menu/settings_menu/gameplay_panel.gd" id="6_qke3a"]
+[ext_resource type="Resource" uid="uid://bur6phiqbk2j5" path="res://assets/themes/default_game_theme/default_animated_button_config.tres" id="8_x5ns2"]
 
-[node name="SettingsScreen" type="Control" unique_id=1239688094 node_paths=PackedStringArray("default_focus")]
+[node name="SettingsScreen" type="Control" unique_id=1239688094]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +21,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("1_udi7s")
 script = ExtResource("2_nfavj")
-default_focus = NodePath("")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1859053213]
 layout_mode = 1
@@ -228,6 +228,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "MAIN_MENU_BACK"
 script = ExtResource("6_5g82o")
+config = ExtResource("8_x5ns2")
 metadata/_custom_type_script = "uid://dvjgopdw7ubc1"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]

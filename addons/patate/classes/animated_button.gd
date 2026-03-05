@@ -2,17 +2,7 @@
 class_name AnimatedButton
 extends Button
 
-@export_group("Focus Animation")
-@export var focus_scale : Vector2 = Vector2(1.05, 1.05)
-@export var focus_duration : float = 0.08
-@export var focus_ease : Tween.EaseType = Tween.EASE_OUT
-@export var focus_trans : Tween.TransitionType = Tween.TRANS_BACK
-
-@export_group("Unfocus Animation")
-@export var unfocus_scale : Vector2 = Vector2.ONE
-@export var unfocus_duration : float = 0.08
-@export var unfocus_ease : Tween.EaseType = Tween.EASE_IN_OUT
-@export var unfocus_trans : Tween.TransitionType = Tween.TRANS_SINE
+@export var config : AnimatedButtonConfig
 
 var _tween : Tween
 
@@ -32,11 +22,15 @@ func _center_pivot() -> void:
 
 
 func _on_focused() -> void:
-	_animate(focus_scale, focus_duration, focus_ease, focus_trans)
+	if not config or disabled:
+		return
+	_animate(config.focus_scale, config.focus_duration, config.focus_ease, config.focus_trans)
 
 
 func _on_unfocused() -> void:
-	_animate(unfocus_scale, unfocus_duration, unfocus_ease, unfocus_trans)
+	if not config or disabled:
+		return
+	_animate(config.unfocus_scale, config.unfocus_duration, config.unfocus_ease, config.unfocus_trans)
 
 
 func _animate(target_scale : Vector2, duration : float, ease_type : Tween.EaseType, trans_type : Tween.TransitionType) -> void:
