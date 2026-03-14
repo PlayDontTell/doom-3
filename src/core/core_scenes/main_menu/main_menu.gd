@@ -67,7 +67,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if InputManager.just_pressed("cancel", event):
+	if InputManager.just_pressed_event("ui_cancel", event):
 		go_back()
 
 

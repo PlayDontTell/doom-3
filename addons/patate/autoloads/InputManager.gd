@@ -1,49 +1,12 @@
 extends Node
 
 
-#region INTENTS : semantic input layer
-## Maps intent names to their Godot Input Map action names.
-## Gameplay code only ever reads intents — never raw action names.
-## To support a second keyboard player, define p2_* actions in the Input Map
-## and add them here. Two players on one keyboard is the practical limit.
-# Core intents — never edited by game devs
-
-const _CORE_INTENTS: Dictionary = {
-	# Basic Movement
-	"move_up":    ["move_up", "ui_up"],
-	"move_down":  ["move_down", "ui_down"],
-	"move_left":  ["move_left", "ui_left"],
-	"move_right": ["move_right", "ui_right"],
-	
-	# Dev Actions
-	"toggle_Dev_layer": ["toggle_Dev_layer"],
-	"toggle_Expo_timer": ["toggle_Expo_timer"],
-	
-	# UI Actions
-	"confirm":   ["ui_accept"],
-	"cancel":    ["ui_cancel"],
-	"pause":     ["pause"],
-	"prev_tab":  ["ui_page_up"],
-	"next_tab":  ["ui_page_down"],
-}
-
-const _DEV_INTENTS: Array = [
+#region ACTIONS : semantic input layer
+# Core actions, never edited by game devs
+const _DEV_ACTIONS: Array = [
 	"toggle_Dev_layer",
 	"toggle_Expo_timer",
 ]
-
-var INTENTS: Dictionary = {}
-
-
-func _ready() -> void:
-	register_intents(_CORE_INTENTS, false)
-
-
-## Call from game code to register game-specific intents.
-## Overwrites core intents of the same name (intentional).
-func register_intents(game_intents: Dictionary, overwrite: bool = true) -> void:
-	INTENTS.merge(game_intents, overwrite)
-
 
 ## Register additional allowed intents for an existing context.
 func extend_context(context: Context, additional_intents: Array) -> void:
@@ -53,25 +16,58 @@ func extend_context(context: Context, additional_intents: Array) -> void:
 				CONTEXT_RULES[context].append(intent)
 
 
-## Returns true if the intent was just pressed.
-## Polling (no event): call from _process() or _physics_process().
-## Event-driven (with event): call from _input(event) — optionally filter by device_id.
-func just_pressed(intent: String, event: InputEvent = null, device_id: int = -1) -> bool:
-	return _check_intent(intent, Input.is_action_just_pressed, event, device_id)
+## Returns true if the action was just pressed this frame.
+## Polling — call from _process() or _physics_process().
+## Pass device_id for local multiplayer gamepad filtering.
+func just_pressed(action: StringName, device_id: int = -1) -> bool:
+	return _check_action(action, null, device_id, Input.is_action_just_pressed, false)
 
 
-## Returns true if the intent is currently held.
-## Polling (no event): call from _process() or _physics_process().
-## Event-driven (with event): call from _input(event) — optionally filter by device_id.
-func pressed(intent: String, event: InputEvent = null, device_id: int = -1) -> bool:
-	return _check_intent(intent, Input.is_action_pressed, event, device_id)
+## Returns true if the action was just pressed, matching the given InputEvent.
+## Event-driven — call from _input(event).
+## Pass device_id to restrict to a specific gamepad.
+func just_pressed_event(action: StringName, event: InputEvent, device_id: int = -1) -> bool:
+	return _check_action(action, event, device_id, Input.is_action_just_pressed, false)
 
 
-## Returns true if the intent was just released.
-## Polling (no event): call from _process() or _physics_process().
-## Event-driven (with event): call from _input(event) — optionally filter by device_id.
-func just_released(intent: String, event: InputEvent = null, device_id: int = -1) -> bool:
-	return _check_intent(intent, Input.is_action_just_released, event, device_id)
+## Returns true if the action is currently held.
+## Polling — call from _process() or _physics_process().
+## Pass device_id for local multiplayer gamepad filtering.
+func pressed(action: StringName, device_id: int = -1) -> bool:
+	return _check_action(action, null, device_id, Input.is_action_pressed, false)
+
+
+## Returns true if the action is currently held, matching the given InputEvent.
+## Event-driven — call from _input(event).
+## Pass device_id to restrict to a specific gamepad.
+func pressed_event(action: StringName, event: InputEvent, device_id: int = -1) -> bool:
+	return _check_action(action, event, device_id, Input.is_action_pressed, false)
+
+
+## Returns true if the action was just released this frame.
+## Polling — call from _process() or _physics_process().
+## Pass device_id for local multiplayer gamepad filtering.
+func just_released(action: StringName, device_id: int = -1) -> bool:
+	return _check_action(action, null, device_id, Input.is_action_just_released, true)
+
+
+## Returns true if the action was just released, matching the given InputEvent.
+## Event-driven — call from _input(event).
+## Pass device_id to restrict to a specific gamepad.
+func just_released_event(action: StringName, event: InputEvent, device_id: int = -1) -> bool:
+	return _check_action(action, event, device_id, Input.is_action_just_released, true)
+
+
+
+func _check_action(action: StringName, event: InputEvent, device_id: int, polling_func: Callable, event_released: bool) -> bool:
+	if not _is_action_allowed(action):
+		return false
+	var translated := translate_action(action, device_id)
+	if event:
+		if event_released:
+			return event.is_action_released(translated)
+		return event.is_action_pressed(translated)
+	return polling_func.call(translated)
 
 
 ## Returns a normalized movement vector, filtered by the active context.
@@ -79,7 +75,7 @@ func just_released(intent: String, event: InputEvent = null, device_id: int = -1
 ## Pass device_id for gamepad — reads left stick directly.
 ## For touch, handle movement in D and pass the vector to your node.
 func get_move_vector(device_id : int = -1) -> Vector2:
-	if not _is_intent_allowed("move_up"):
+	if not _is_action_allowed("move_up"):
 		return Vector2.ZERO
 	
 	if device_id >= 0:
@@ -88,70 +84,46 @@ func get_move_vector(device_id : int = -1) -> Vector2:
 			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_Y)
 		).normalized()
 	
-	if not (
-			INTENTS.has("move_right")
-		and INTENTS.has("move_left")
-		and INTENTS.has("move_down") 
-		and INTENTS.has("move_up")
-	):
+	if not (InputMap.has_action("move_up") and InputMap.has_action("move_down")
+		and InputMap.has_action("move_left") and InputMap.has_action("move_right")):
 		return Vector2.ZERO
 	
 	return Vector2(
-		_get_intent_strength("move_right") - _get_intent_strength("move_left"),
-		_get_intent_strength("move_down")  - _get_intent_strength("move_up")
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down")  - Input.get_action_strength("move_up"),
 	).normalized()
 
 
 
-func _get_intent_strength(intent: String) -> float:
-	var strength := 0.0
-	for action: String in INTENTS[intent]:
-		if not InputMap.has_action(action):
-			continue
-		strength = maxf(strength, Input.get_action_strength(action))
-	return strength
+## Translates a base action to a device-specific variant for local multiplayer.
+## Lazily creates "action_0", "action_1" etc. in the InputMap on first call.
+## Keyboard events are shared — only gamepad events are device-specific.
+func translate_action(action: StringName, device_id: int) -> StringName:
+	if device_id < 0:
+		return action
+	
+	var device_action : StringName = StringName(action + "_" + str(device_id))
+	
+	if not InputMap.has_action(device_action):
+		InputMap.add_action(device_action)
+		for event in InputMap.action_get_events(action):
+			if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+				var new_event := event.duplicate()
+				new_event.device = device_id
+				InputMap.action_add_event(device_action, new_event)
+	
+	return device_action
 
 
-func _check_intent(intent: String, check_func: Callable, event: InputEvent, device_id: int) -> bool:
-	assert(INTENTS.has(intent), "I : Unknown intent '%s'" % intent)
-	if not _is_intent_allowed(intent):
-		return false
 
-	for action: String in INTENTS[intent]:
-		if event:
-			# Event-driven: match this exact event, ignore global Input state.
-			# device_id == -1 means accept any device.
-			if device_id != -1 and event.device != device_id:
-				continue
-			
-			# InputEvent has no "just pressed" vs "held" distinction
-			# We need a bool to connect Input and InputEvent possibilities
-			var matched: bool
-			if check_func == Input.is_action_just_released:
-				# is_action_just_released() uses is_action_released()
-				matched = event.is_action_released(action)
-			else:
-				# is_action_pressed() covers both just_pressed() and pressed()
-				matched = event.is_action_pressed(action)
-
-			if matched:
-				return true
-		else:
-			# Polling: query global Input state — valid in _process / _physics_process.
-			if check_func.call(action):
-				return true
-
-	return false
-
-
-func _is_intent_allowed(intent: String) -> bool:
-	if intent in _DEV_INTENTS:
+func _is_action_allowed(action: String) -> bool:
+	if action in _DEV_ACTIONS:
 		return true
 	
 	if _active_context == null:
 		return true
 	var allowed: Array = CONTEXT_RULES[_active_context.context]
-	return allowed.is_empty() or intent in allowed
+	return allowed.is_empty() or action in allowed
 #endregion
 
 
@@ -172,48 +144,45 @@ enum Context {
 
 ## Which intents are allowed per context. Empty array means allow all.
 var CONTEXT_RULES : Dictionary = {
-	Context.GAMEPLAY: [
-		"move_up",
-		"move_down",
-		"move_left",
-		"move_right",
-	],
 	Context.MENU: [
-		"confirm",
-		"cancel",
-		"move_up",
-		"move_down",
-		"move_left",
-		"move_right",
-		"prev_tab",
-		"next_tab",
+		"ui_accept",
+		"ui_cancel",
+		"ui_up",
+		"ui_down",
+		"ui_left",
+		"ui_right",
+		"ui_page_up",
+		"ui_page_down"
 	],
 	Context.PAUSE: [
-		"confirm",
-		"cancel",
-		"move_up",
-		"move_down",
-		"move_left",
-		"move_right",
-		"prev_tab",
-		"next_tab",
+		"ui_accept",
+		"ui_cancel",
+		"ui_up",
+		"ui_down",
+		"ui_left",
+		"ui_right",
+		"ui_page_up",
+		"ui_page_down"
 	],
 	Context.DIALOGUE: [
-		"confirm",
-		"cancel",
+		"ui_accept",
+		"ui_cancel"
 	],
 	Context.CUTSCENE: [
-		"cancel",
+		"ui_cancel"
 	],
 	Context.EXIT_DIALOG: [
-		"confirm",
-		"cancel",
-		"move_up",
-		"move_down",
-		"move_left",
-		"move_right",
-		"prev_tab",
-		"next_tab",
+		"ui_accept",
+		"ui_cancel",
+		"ui_up",
+		"ui_down",
+		"ui_left",
+		"ui_right",
+		"ui_page_up",
+		"ui_page_down"
+	],
+	Context.GAMEPLAY: [
+		
 	],
 }
 
@@ -306,54 +275,62 @@ func _get_active_context() -> ContextHandle:
 ##   I.reset_bindings()
 
 
-## Rebinds an intent's primary action to a new input event and saves to SettingsManager.settings.
+## Rebinds an action
 ## Only replaces the first action — secondary fallbacks (ui_up etc.) are preserved.
-func rebind(intent : String, new_event : InputEvent) -> bool:
-	assert(INTENTS.has(intent), "I : Unknown intent '%s'" % intent)
-	var action_to_rebind : String = INTENTS[intent][0]
+func rebind(action: StringName, new_event: InputEvent) -> bool:
+	assert(InputMap.has_action(action), "InputManager: Unknown action '%s'" % action)
 	
-	# Check if new_event is already binded to another intent
-	var conflicts: Array[String] = get_conflicting_intent(new_event)
-	if not (conflicts.is_empty() or conflicts == [intent]):
+	var conflicts: Array[String] = get_conflicting_action(new_event)
+	if not (conflicts.is_empty() or conflicts == [String(action)]):
 		if G.config.block_duplicate_bindings:
 			push_warning("InputManager: '%s' already bound to '%s', blocked." % [new_event.as_text(), conflicts])
 			return false
 		else:
 			push_warning("InputManager: '%s' already bound to '%s', but duplicates are allowed." % [new_event.as_text(), conflicts])
 	
-	# Erase binded events that match the same InputMethod (Gamepad, Keyboard, etc.)
-	var new_method : DeviceManager.InputMethod = DeviceManager.get_input_method_from_event(new_event)
-	for existing_event in InputMap.action_get_events(action_to_rebind):
+	var new_method := DeviceManager.get_input_method_from_event(new_event)
+	for existing_event in InputMap.action_get_events(action):
 		if DeviceManager.get_input_method_from_event(existing_event) == new_method:
-			InputMap.action_erase_event(action_to_rebind, existing_event)
+			InputMap.action_erase_event(action, existing_event)
 	
-	InputMap.action_add_event(action_to_rebind, new_event)
+	InputMap.action_add_event(action, new_event)
 	_save_bindings()
-	
 	return true
 
 
-## Find what intents already use an InputEvent as a trigger (conflicts)
+## Find what actions already use an InputEvent as a trigger (conflicts)
 ## Each intent has actions (InputMaps), and each action has events (InputEvents)
-func get_conflicting_intent(new_event : InputEvent) -> Array[String]:
-	var conflicting_intents: Array[String] = []
+func get_conflicting_action(new_event: InputEvent) -> Array[String]:
+	var conflicting_actions: Array[String] = []
+	var checked: Array[String] = []  # avoid duplicate checks
 	
-	for intent : String in INTENTS.keys():
-		for action in INTENTS[intent]:
+	for actions in CONTEXT_RULES.values():
+		for action: String in actions:
+			if action in checked:
+				continue
+			checked.append(action)
 			for existing_event in InputMap.action_get_events(action):
-				# is_match let's us compare device ID, which permits multiple gamepads
 				if existing_event.is_match(new_event):
-					conflicting_intents.append(intent)
+					conflicting_actions.append(action)
 					break
 	
-	return conflicting_intents
+	return conflicting_actions
 
 
 ## Returns the current primary InputEvent bound to an intent, or null if unbound.
-func get_binding(intent : String) -> InputEvent:
-	assert(INTENTS.has(intent), "I : Unknown intent '%s'" % intent)
-	var events := InputMap.action_get_events(INTENTS[intent][0])
+func get_binding(action: StringName) -> InputEvent:
+	assert(InputMap.has_action(action), "InputManager: Unknown action '%s'" % action)
+	var events := InputMap.action_get_events(action)
 	return events[0] if not events.is_empty() else null
+
+
+## Returns the InputEvent bound to an action for a specific device type, or null if unbound.
+func get_binding_for_device(action: StringName, method: DeviceManager.InputMethod) -> InputEvent:
+	assert(InputMap.has_action(action), "InputManager: Unknown action '%s'" % action)
+	for event in InputMap.action_get_events(action):
+		if DeviceManager.get_input_method_from_event(event) == method:
+			return event
+	return null
 
 
 ## Restores saved bindings from SettingsManager.settings into the live InputMap.
@@ -373,17 +350,21 @@ func reset_bindings() -> void:
 
 
 func _save_bindings() -> void:
-	var bindings : Array[InputBindingEntry] = []
-	for intent : String in INTENTS:
-		var action : String = INTENTS[intent][0]
-		if InputMap.has_action(action):
+	var bindings: Array[InputBindingEntry] = []
+	var saved: Array[String] = []  # avoid duplicates
+	
+	for actions in CONTEXT_RULES.values():
+		for action: String in actions:
+			if action in saved or not InputMap.has_action(action):
+				continue
+			saved.append(action)
 			var events := InputMap.action_get_events(action)
 			if not events.is_empty():
 				var entry := InputBindingEntry.new()
 				entry.action = action
 				entry.event = events[0]
 				bindings.append(entry)
+	
 	SettingsManager.settings.input_bindings = bindings
 	SettingsManager.save_settings()
-
 #endregion

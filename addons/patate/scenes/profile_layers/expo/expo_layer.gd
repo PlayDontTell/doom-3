@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if InputManager.just_pressed("toggle_Expo_timer", event):
+	if InputManager.just_pressed_event("toggle_Expo_timer", event):
 		set_expo_timer_enabled(not current_event.is_expo_timer_enabled)
 
 

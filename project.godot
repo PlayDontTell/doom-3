@@ -16,7 +16,7 @@ markdown_book/docs_folder="res://docs"
 
 config/name="Patate"
 config/version="0.0.0"
-run/main_scene="uid://bq4f6cr6mkgxd"
+run/main_scene="uid://c4g2mrbdks3sb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
