@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://46qikc2s4pbi"]
+
+[ext_resource type="Script" uid="uid://bl6qtndip0bry" path="res://src/core/core_scenes/main_menu/settings_menu/binding_menus/binding_row.gd" id="1_dsub0"]
+[ext_resource type="Script" uid="uid://dvjgopdw7ubc1" path="res://addons/patate/classes/AnimatedButton.gd" id="3_x8f2b"]
+[ext_resource type="PackedScene" uid="uid://ims4otaqof5w" path="res://src/core/core_scenes/main_menu/settings_menu/reset_btn.tscn" id="4_dsub0"]
+[ext_resource type="Resource" uid="uid://bur6phiqbk2j5" path="res://assets/themes/default_game_theme/default_animated_button_config.tres" id="4_etv5d"]
+
+[node name="BindingRow" type="HBoxContainer" unique_id=189371261]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -12.0
+offset_right = 106.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+script = ExtResource("1_dsub0")
+
+[node name="ActionLabel" type="Label" parent="." unique_id=1718494305]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"TooltipLabel"
+text = "..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BindingBtn" type="Button" parent="." unique_id=801383951]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+icon_alignment = 1
+script = ExtResource("3_x8f2b")
+config = ExtResource("4_etv5d")
+metadata/_custom_type_script = "uid://dvjgopdw7ubc1"
+
+[node name="ResetBtn" parent="." unique_id=927814898 instance=ExtResource("4_dsub0")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container" type="Container" parent="." unique_id=914061340]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="BindingBtn" to="." method="_on_rebind_btn_pressed"]
+[connection signal="pressed" from="ResetBtn" to="." method="_on_reset_btn_pressed"]

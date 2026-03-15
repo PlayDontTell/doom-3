@@ -94,7 +94,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag or event is InputEventMouseMotion:
 		set_mouse_position_label(event.position)
 	
-	if InputManager.just_pressed("toggle_Dev_layer", event):
+	if InputManager.just_pressed_event("toggle_Dev_layer", event):
 		display_debug_layer()
 
 

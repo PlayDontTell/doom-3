@@ -34,7 +34,7 @@ static func generate_points_in_circle(center : Vector2 = Vector2.ZERO, radius : 
 	
 	return points_list
 
-
+# TODO : comment usage
 const AUTHORIZED_CHARACTERS : String = "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+- "
 ## Sanitize a string by replacing invalid filename characters with underscores
 ## Can be used for filenames, save names, or any string that needs filesystem safety
