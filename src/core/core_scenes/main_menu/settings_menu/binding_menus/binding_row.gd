@@ -69,8 +69,9 @@ func _update_binding_btn(event: InputEvent) -> void:
 	if event == null:
 		binding_btn.icon = null
 		binding_btn.text = "SETTINGS_BINDINGS_UNBOUND"
+		binding_btn.set_theme_type_variation("Button")
 		return
-	var device_id := -1
+	var device_id : int = -1
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		var joypads : Array = Input.get_connected_joypads()
 		if not joypads.is_empty():
