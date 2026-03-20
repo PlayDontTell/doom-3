@@ -14,6 +14,7 @@ enum Mode {
 	COLLECTING,
 }
 
+@export var mode: Mode = Mode.BLOCKING
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -35,5 +36,31 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
-func change_mode()
+func change_mode(new_mode: Mode) -> void:
+	var previous_mode = mode
+	mode = new_mode
+	
+	disable_mode = CollisionObject2D.DISABLE_MODE_MAKE_STATIC
+	process_mode = Node.PROCESS_MODE_INHERIT
+	
+	match previous_mode:
+		Mode.MOVING: pass
+		Mode.BLOCKING: pass
+		Mode.KILLING: pass
+		Mode.ENDING: pass
+		Mode.DECORING: pass
+		Mode.COLLECTING: pass
+	match mode:
+		Mode.BLOCKING:
+			process_mode = Node.PROCESS_MODE_DISABLED
+		Mode.KILLING:
+			process_mode = Node.PROCESS_MODE_DISABLED
+		Mode.ENDING: 
+			process_mode = Node.PROCESS_MODE_DISABLED
+		Mode.DECORING: 
+			disable_mode = CollisionObject2D.DISABLE_MODE_REMOVE
+			process_mode = Node.PROCESS_MODE_DISABLED
+		Mode.COLLECTING: 
+			# TODO besoin d'un area
+			pass
+		Mode.MOVING: pass
