@@ -8,5 +8,15 @@
 
 [resource]
 script = ExtResource("3_q2ua5")
+release_mode = null
+core_scenes = Dictionary[StringName, PackedScene]({
+&"GAME": ExtResource("3_ghgqd"),
+&"LOADING": ExtResource("2_8l1bw"),
+&"MAIN_MENU": ExtResource("1_fo6jg")
+})
+dev_start_scene = &"GAME"
+playtest_start_scene = null
+release_start_scene = null
+expo_start_scene = null
 block_duplicate_bindings = false
 metadata/_custom_type_script = "uid://b0l3ym7olemuc"
