@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://mvgl530uxosh"]
+
+[ext_resource type="Script" uid="uid://3tjy64voh5f3" path="res://src/scenes/level_editor/level_editor.gd" id="1_g7gxu"]
+
+[node name="LevelEditor" type="Node2D" unique_id=845077926]
+script = ExtResource("1_g7gxu")
+
+[node name="ToutPool" type="Node2D" parent="." unique_id=1250702451]
+unique_name_in_owner = true

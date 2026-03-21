@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bdxa2sscdbvfl"]
+
+[ext_resource type="Script" uid="uid://byw3lmswxnr4v" path="res://src/scenes/ui/config_bar/config_bar.gd" id="1_6m3mh"]
+[ext_resource type="PackedScene" uid="uid://bnqow3cwqsdlq" path="res://src/scenes/ui/config_bar/function_option.tscn" id="2_b7his"]
+[ext_resource type="PackedScene" uid="uid://ddun1qv7qq44l" path="res://src/scenes/ui/config_bar/nature_option.tscn" id="3_hnssp"]
+
+[node name="ConfigBar" type="Node2D" unique_id=1876330842]
+script = ExtResource("1_6m3mh")
+
+[node name="Functions" type="Node2D" parent="." unique_id=224125868]
+
+[node name="ToutOption1" parent="Functions" unique_id=324958501 instance=ExtResource("2_b7his")]
+
+[node name="ToutOption2" parent="Functions" unique_id=288677071 instance=ExtResource("2_b7his")]
+
+[node name="ToutOption3" parent="Functions" unique_id=341199903 instance=ExtResource("2_b7his")]
+
+[node name="ToutOption4" parent="Functions" unique_id=499204149 instance=ExtResource("2_b7his")]
+
+[node name="ToutOption5" parent="Functions" unique_id=11018507 instance=ExtResource("2_b7his")]
+
+[node name="ToutOption6" parent="Functions" unique_id=1951553976 instance=ExtResource("2_b7his")]
+
+[node name="Natures" type="Node2D" parent="." unique_id=546007338]
+
+[node name="NatureOption1" parent="Natures" unique_id=1411791054 instance=ExtResource("3_hnssp")]
+
+[node name="NatureOption2" parent="Natures" unique_id=538455491 instance=ExtResource("3_hnssp")]
+
+[node name="NatureOption3" parent="Natures" unique_id=1873674014 instance=ExtResource("3_hnssp")]
+
+[node name="NatureOption4" parent="Natures" unique_id=936436786 instance=ExtResource("3_hnssp")]
+
+[node name="NatureOption5" parent="Natures" unique_id=1952674696 instance=ExtResource("3_hnssp")]
+
+[node name="NatureOption6" parent="Natures" unique_id=529054017 instance=ExtResource("3_hnssp")]
