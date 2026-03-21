@@ -99,12 +99,16 @@ func change_mode(new_mode: Mode) -> void:
 	
 	disable_mode = CollisionObject2D.DISABLE_MODE_MAKE_STATIC
 	process_mode = Node.PROCESS_MODE_INHERIT
+	collision_shape.shape.size = Vector2(31, 31)
 	
 	match mode:
 		Mode.BLOCKING:
 			process_mode = Node.PROCESS_MODE_DISABLED
 		Mode.KILLING:
 			process_mode = Node.PROCESS_MODE_DISABLED
+			collision_shape.shape = RectangleShape2D.new() 
+			# TODO tester si c'est coherent
+			collision_shape.shape.size = Vector2(28, 28)
 		Mode.ENDING: 
 			process_mode = Node.PROCESS_MODE_DISABLED
 		Mode.DECORING: 

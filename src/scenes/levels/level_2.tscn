@@ -16,11 +16,17 @@ texture = ExtResource("2_bqs4s")
 
 [node name="Tout2" parent="Touts" unique_id=2033816981 instance=ExtResource("2_xjnks")]
 process_mode = 4
-position = Vector2(240, 336)
+position = Vector2(176, 368)
 disable_mode = 1
 nature = 2
 
-[node name="Tout13" parent="Touts" unique_id=556554685 instance=ExtResource("2_xjnks")]
+[node name="Tout23" parent="Touts" unique_id=556554685 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(208, 368)
+disable_mode = 1
+nature = 2
+
+[node name="Tout13" parent="Touts" unique_id=2066317454 instance=ExtResource("2_xjnks")]
 process_mode = 4
 position = Vector2(112, 368)
 disable_mode = 1
@@ -88,12 +94,17 @@ nature = 3
 
 [node name="Tout6" parent="Touts" unique_id=1882064834 instance=ExtResource("2_xjnks")]
 process_mode = 4
-position = Vector2(208, 368)
+position = Vector2(144, 400)
+disable_mode = 1
+
+[node name="Tout21" parent="Touts" unique_id=1848303348 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(240, 368)
 disable_mode = 1
 
 [node name="Tout7" parent="Touts" unique_id=1332304473 instance=ExtResource("2_xjnks")]
 process_mode = 4
-position = Vector2(176, 368)
+position = Vector2(272, 368)
 disable_mode = 1
 
 [node name="Tout3" parent="Touts" unique_id=1321816085 instance=ExtResource("2_xjnks")]
@@ -108,14 +119,43 @@ disable_mode = 1
 
 [node name="Tout" parent="Touts" unique_id=1515487103 instance=ExtResource("2_xjnks")]
 process_mode = 4
-position = Vector2(272, 368)
+position = Vector2(208, 400)
+disable_mode = 1
+
+[node name="Tout22" parent="Touts" unique_id=541912879 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(240, 400)
 disable_mode = 1
 
 [node name="Tout9" parent="Touts" unique_id=748333365 instance=ExtResource("2_xjnks")]
 process_mode = 4
-position = Vector2(240, 368)
+position = Vector2(176, 400)
 disable_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1683824006]
 position = Vector2(240, 304)
 zoom = Vector2(2.72, 2.72)
+
+[node name="Tout21" parent="." unique_id=149373709 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(112, 176)
+disable_mode = 1
+nature = 4
+
+[node name="Tout22" parent="." unique_id=2021379264 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(144, 176)
+disable_mode = 1
+nature = 4
+
+[node name="Tout23" parent="." unique_id=72907778 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(144, 208)
+disable_mode = 1
+nature = 4
+
+[node name="Tout24" parent="." unique_id=856618335 instance=ExtResource("2_xjnks")]
+process_mode = 4
+position = Vector2(176, 176)
+disable_mode = 1
+nature = 4
