@@ -7,6 +7,7 @@ const LAST_LEVEL = 4
 
 func _ready() -> void:
 	_load_level(current_level_number)
+	$CanvasLayer/ConfigBar.changed.connect(_on_change_modes)
 
 
 func _load_level(number: int) -> void:
@@ -34,3 +35,7 @@ func _kill_current_level() -> void:
 		return
 	level.end.disconnect(_on_ending)
 	level.queue_free()
+
+
+func _on_change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
+	level.change_modes(dict)
