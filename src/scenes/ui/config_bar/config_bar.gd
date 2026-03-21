@@ -2,21 +2,22 @@ extends Node2D
 
 @onready var nature_options_container = $Natures
 var selected
-var nature_to_function : Dictionary = {
-	Tout.Mode.MOVING : Tout.Mode.MOVING,
-	Tout.Mode.BLOCKING : Tout.Mode.BLOCKING,
-	Tout.Mode.KILLING : Tout.Mode.KILLING,
-	Tout.Mode.ENDING : Tout.Mode.ENDING,
-	Tout.Mode.DECORING : Tout.Mode.DECORING,
-	Tout.Mode.COLLECTING : Tout.Mode.COLLECTING,
+var nature_to_function: Dictionary[Tout.Mode, Tout.Mode] = {
+	Tout.Mode.MOVING: Tout.Mode.MOVING,
+	Tout.Mode.BLOCKING: Tout.Mode.BLOCKING,
+	Tout.Mode.KILLING: Tout.Mode.KILLING,
+	Tout.Mode.ENDING: Tout.Mode.ENDING,
+	Tout.Mode.DECORING: Tout.Mode.DECORING,
+	Tout.Mode.COLLECTING: Tout.Mode.COLLECTING,
 }
+
+signal changed(dict: Dictionary[Tout.Mode, Tout.Mode])
 
 var is_switching = false
 
 func _ready() -> void:
 	for nature_option: NatureOption in nature_options_container.get_children():
 		nature_option.click.connect(_on_click)
-		print(nature_option)
 
 
 func _on_click(option: NatureOption) -> void:
@@ -35,6 +36,13 @@ func _on_click(option: NatureOption) -> void:
 
 
 func switch(option_a: NatureOption, option_b: NatureOption) -> void:
+	# invert to values
+	var z = nature_to_function[option_a.nature]
+	nature_to_function[option_a.nature] = nature_to_function[option_b.nature]
+	nature_to_function[option_b.nature] = z
+	changed.emit(nature_to_function)
+	
+	# animation
 	is_switching = true
 	var position_a = option_a.position
 	var position_b = option_b.position

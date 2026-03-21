@@ -6,7 +6,7 @@ signal click(option: NatureOption)
 @onready var tout_animation: AnimatedSprite2D = %ToutAnimation
 var is_selected : bool = true
 
-@export var nature : Tout.Mode = Tout.Mode.MOVING:
+@export var nature: Tout.Mode = Tout.Mode.MOVING:
 	set(new_nature):
 		nature = new_nature
 		_draw_nature(nature)

@@ -26,3 +26,8 @@ func _on_killed(player: Tout) -> void:
 
 func _on_ending(_player: Tout) -> void:
 	end.emit()
+
+
+func change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
+	for tout: Tout in touts:
+		tout.change_mode(dict[tout.mode])
