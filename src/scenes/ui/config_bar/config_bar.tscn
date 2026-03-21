@@ -12,25 +12,42 @@ script = ExtResource("1_6m3mh")
 [node name="ToutOption1" parent="Functions" unique_id=324958501 instance=ExtResource("2_b7his")]
 
 [node name="ToutOption2" parent="Functions" unique_id=288677071 instance=ExtResource("2_b7his")]
+position = Vector2(64, 0)
 
 [node name="ToutOption3" parent="Functions" unique_id=341199903 instance=ExtResource("2_b7his")]
+position = Vector2(128, 0)
 
 [node name="ToutOption4" parent="Functions" unique_id=499204149 instance=ExtResource("2_b7his")]
+position = Vector2(192, 0)
 
 [node name="ToutOption5" parent="Functions" unique_id=11018507 instance=ExtResource("2_b7his")]
+position = Vector2(256, 0)
 
 [node name="ToutOption6" parent="Functions" unique_id=1951553976 instance=ExtResource("2_b7his")]
+position = Vector2(320, 0)
 
 [node name="Natures" type="Node2D" parent="." unique_id=546007338]
+position = Vector2(0, 64)
 
 [node name="NatureOption1" parent="Natures" unique_id=1411791054 instance=ExtResource("3_hnssp")]
+nature = null
 
 [node name="NatureOption2" parent="Natures" unique_id=538455491 instance=ExtResource("3_hnssp")]
+position = Vector2(64, 0)
+nature = null
 
 [node name="NatureOption3" parent="Natures" unique_id=1873674014 instance=ExtResource("3_hnssp")]
+position = Vector2(128, 0)
+nature = null
 
 [node name="NatureOption4" parent="Natures" unique_id=936436786 instance=ExtResource("3_hnssp")]
+position = Vector2(192, 0)
+nature = null
 
 [node name="NatureOption5" parent="Natures" unique_id=1952674696 instance=ExtResource("3_hnssp")]
+position = Vector2(256, 0)
+nature = null
 
 [node name="NatureOption6" parent="Natures" unique_id=529054017 instance=ExtResource("3_hnssp")]
+position = Vector2(320, 0)
+nature = null

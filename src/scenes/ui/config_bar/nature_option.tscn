@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://ddun1qv7qq44l"]
 
 [ext_resource type="Script" uid="uid://cyqd4urxtygs3" path="res://src/scenes/ui/config_bar/nature_option.gd" id="1_lwvon"]
+[ext_resource type="PackedScene" uid="uid://do04p04xa8gkq" path="res://src/scenes/tout/character.tscn" id="2_2f306"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvuy5"]
+radius = 20.09975
 
-[node name="NatureOption" type="Node2D" unique_id=324958501]
+[node name="NatureOption" type="Area2D" unique_id=258862224]
 script = ExtResource("1_lwvon")
+function = 4
 
-[node name="Area2D" type="Area2D" parent="." unique_id=258862224]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=74839949]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=74839949]
 shape = SubResource("CircleShape2D_mvuy5")
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[node name="ToutAnimation" parent="." unique_id=698907468 instance=ExtResource("2_2f306")]
+unique_name_in_owner = true
+scale = Vector2(0.02, 0.02)
+animation = &"blocking"
+frame_progress = 0.0

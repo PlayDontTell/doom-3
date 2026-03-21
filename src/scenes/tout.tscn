@@ -13,6 +13,7 @@ script = ExtResource("1_6qxoj")
 shape = SubResource("RectangleShape2D_slkx4")
 
 [node name="ToutAnimation" parent="." unique_id=698907468 instance=ExtResource("2_3w5us")]
+unique_name_in_owner = true
 scale = Vector2(0.020806242, 0.020806244)
 animation = &"blocking"
 frame_progress = 0.0
