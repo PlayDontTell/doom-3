@@ -8,8 +8,11 @@ const WIDTH: int = 32
 ## when a collectible is taken
 signal collected(collectible: Tout)
 
-## when a killer is touched
+## when a killing is touched
 signal killed(player: Tout)
+
+## when a winning is touched
+signal end(player: Tout)
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -83,12 +86,10 @@ func _physics_process(delta: float) -> void:
 			match collider.mode:
 				Mode.KILLING:
 					killed.emit(self) 
-					queue_free() # TODO this in the signal handling
 				Mode.ENDING: 
-					pass # TODO win
+					end.emit(self)
 				Mode.COLLECTING:
 					collected.emit(collider)
-					collider.queue_free() # TODO remove in the signal handling +1 -> dans le noeu level !
 				Mode.BLOCKING, Mode.MOVING, Mode.DECORING: pass
 
 
