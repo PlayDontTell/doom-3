@@ -1,27 +1,32 @@
 @tool
-extends Area2D
+class_name NatureOption extends Area2D
+
+signal click(option: NatureOption)
 
 @onready var tout_animation: AnimatedSprite2D = %ToutAnimation
-var has_mode_attached : bool = true
+var is_selected : bool = true
 
 @export var nature : Tout.Mode = Tout.Mode.MOVING:
 	set(new_nature):
 		nature = new_nature
-		draw_nature(nature)
+		_draw_nature(nature)
 
 
 func _ready() -> void:
-	draw_nature(nature)
-
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if InputManager.pressed("left_click"):# and has_mode_attached:
-		has_mode_attached = not has_mode_attached
-		print('click', nature)
+	_draw_nature(nature)
 
 
-func draw_nature(new_nature : Tout.Mode) -> void:
+func _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: int) -> void:
+	if InputManager.just_pressed("left_click"):
+		click.emit(self)
+
+
+func unselect() -> void:
+	is_selected = false
+
+
+func _draw_nature(new_nature : Tout.Mode) -> void:
 	if tout_animation == null:
-		print('animation is null')
 		return
 	match new_nature:
 		Tout.Mode.MOVING: tout_animation.animation = "moving"
