@@ -94,7 +94,6 @@ func _physics_process(delta: float) -> void:
 
 
 func change_mode(new_mode: Mode) -> void:
-	#var previous_mode = mode
 	mode = new_mode
 	
 	disable_mode = CollisionObject2D.DISABLE_MODE_MAKE_STATIC
@@ -102,19 +101,14 @@ func change_mode(new_mode: Mode) -> void:
 	collision_shape.shape.size = Vector2(31, 31)
 	
 	match mode:
-		Mode.BLOCKING:
+		Mode.BLOCKING, Mode.COLLECTING, Mode.ENDING: 
 			process_mode = Node.PROCESS_MODE_DISABLED
 		Mode.KILLING:
 			process_mode = Node.PROCESS_MODE_DISABLED
 			collision_shape.shape = RectangleShape2D.new() 
-			# TODO tester si c'est coherent
 			collision_shape.shape.size = Vector2(28, 28)
-		Mode.ENDING: 
-			process_mode = Node.PROCESS_MODE_DISABLED
-		Mode.DECORING: 
+		Mode.DECORING:
 			disable_mode = CollisionObject2D.DISABLE_MODE_REMOVE
 			process_mode = Node.PROCESS_MODE_DISABLED
-		Mode.COLLECTING: 
-			process_mode = Node.PROCESS_MODE_DISABLED
-			# TODO besoin d'un area
-		Mode.MOVING: pass
+		Mode.MOVING:
+			process_mode = Node.PROCESS_MODE_INHERIT

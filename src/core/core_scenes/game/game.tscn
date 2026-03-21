@@ -19,6 +19,7 @@ texture = ExtResource("3_20heu")
 layer = 30
 
 [node name="ConfigBar" parent="CanvasLayer" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
+visible = false
 position = Vector2(496, 624)
 
 [node name="Reset" type="Button" parent="CanvasLayer" unique_id=69836828]

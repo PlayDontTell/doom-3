@@ -1,4 +1,4 @@
-extends Node2D
+class_name ConfigBar extends Node2D
 
 @onready var nature_options_container = $Natures
 var selected
@@ -18,7 +18,6 @@ var is_switching = false
 func _ready() -> void:
 	for nature_option: NatureOption in nature_options_container.get_children():
 		nature_option.click.connect(_on_click)
-
 
 func _on_click(option: NatureOption) -> void:
 	if is_switching:
