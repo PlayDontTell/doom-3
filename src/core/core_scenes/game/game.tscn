@@ -20,3 +20,12 @@ layer = 30
 
 [node name="ConfigBar" parent="CanvasLayer" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
 position = Vector2(496, 624)
+
+[node name="Reset" type="Button" parent="CanvasLayer" unique_id=69836828]
+offset_left = 1191.0
+offset_top = 10.0
+offset_right = 1270.0
+offset_bottom = 82.0
+text = "RESET"
+
+[connection signal="pressed" from="CanvasLayer/Reset" to="." method="_on_reset_button_pressed"]

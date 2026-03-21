@@ -17,9 +17,20 @@ func _load_level(number: int) -> void:
 
 
 func _on_ending() -> void:
-	level.end.disconnect(_on_ending)
-	level.queue_free()
+	_kill_current_level()
 	if current_level_number == LAST_LEVEL:
 		return # TODO game over
 	current_level_number += 1
 	_load_level.call_deferred(current_level_number)
+
+
+func _on_reset_button_pressed() -> void:
+	_kill_current_level()
+	_load_level(current_level_number)
+
+
+func _kill_current_level() -> void: 
+	if level == null:
+		return
+	level.end.disconnect(_on_ending)
+	level.queue_free()
