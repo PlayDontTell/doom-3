@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cditwqg0ylrk7" path="res://src/core/core_scenes/game/game.gd" id="1_dl4f6"]
 [ext_resource type="PackedScene" uid="uid://cfmvs4ijai7r8" path="res://src/scenes/ui/hud/pause_menu/pause_menu.tscn" id="2_6bt27"]
-[ext_resource type="PackedScene" uid="uid://wwl0b2jylh3b" path="res://src/scenes/tout.tscn" id="3_20heu"]
+[ext_resource type="Texture2D" uid="uid://ql3jgwai21mo" path="res://assets/art/background.png" id="3_20heu"]
 
 [node name="Game" type="Node2D" unique_id=488682812]
 script = ExtResource("1_dl4f6")
@@ -10,100 +10,6 @@ script = ExtResource("1_dl4f6")
 [node name="PauseMenu" parent="." unique_id=415372991 instance=ExtResource("2_6bt27")]
 visible = false
 
-[node name="Tout2" parent="." unique_id=2033816981 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(240, 368)
-disable_mode = 1
-
-[node name="Tout13" parent="." unique_id=556554685 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(208, 336)
-disable_mode = 1
-
-[node name="Tout19" parent="." unique_id=1815611493 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(304, 336)
-disable_mode = 1
-
-[node name="Tout8" parent="." unique_id=745671463 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(400, 336)
-disable_mode = 1
-
-[node name="Tout12" parent="." unique_id=912778695 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(400, 304)
-disable_mode = 1
-
-[node name="Tout9" parent="." unique_id=354197024 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(144, 304)
-disable_mode = 1
-nature = 2
-
-[node name="Tout18" parent="." unique_id=619694613 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(176, 240)
-disable_mode = 1
-nature = 5
-
-[node name="Tout10" parent="." unique_id=347376934 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(144, 336)
-disable_mode = 1
-
-[node name="Tout11" parent="." unique_id=1498956516 instance=ExtResource("3_20heu")]
-position = Vector2(240, 336)
-disable_mode = 1
-nature = 0
-
-[node name="Tout16" parent="." unique_id=1749909781 instance=ExtResource("3_20heu")]
-position = Vector2(272, 336)
-disable_mode = 1
-nature = 0
-
-[node name="Tout5" parent="." unique_id=1897567910 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(368, 368)
-disable_mode = 1
-
-[node name="Tout14" parent="." unique_id=1510374755 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(464, 368)
-disable_mode = 1
-
-[node name="Tout15" parent="." unique_id=1901918233 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(496, 368)
-disable_mode = 1
-
-[node name="Tout17" parent="." unique_id=1863031439 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(496, 304)
-disable_mode = 1
-nature = 3
-
-[node name="Tout6" parent="." unique_id=1882064834 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(208, 368)
-disable_mode = 1
-
-[node name="Tout7" parent="." unique_id=1332304473 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(176, 368)
-disable_mode = 1
-
-[node name="Tout3" parent="." unique_id=1321816085 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(336, 368)
-disable_mode = 1
-
-[node name="Tout4" parent="." unique_id=1602385257 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(304, 368)
-disable_mode = 1
-
-[node name="Tout" parent="." unique_id=1515487103 instance=ExtResource("3_20heu")]
-process_mode = 4
-position = Vector2(272, 368)
-disable_mode = 1
+[node name="Background" type="Sprite2D" parent="." unique_id=854025331]
+visible = false
+texture = ExtResource("3_20heu")
