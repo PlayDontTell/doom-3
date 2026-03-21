@@ -1,53 +1,132 @@
 [gd_scene format=3 uid="uid://bdxa2sscdbvfl"]
 
 [ext_resource type="Script" uid="uid://byw3lmswxnr4v" path="res://src/scenes/ui/config_bar/config_bar.gd" id="1_6m3mh"]
-[ext_resource type="PackedScene" uid="uid://bnqow3cwqsdlq" path="res://src/scenes/ui/config_bar/function_option.tscn" id="2_b7his"]
+[ext_resource type="PackedScene" uid="uid://do04p04xa8gkq" path="res://src/scenes/tout/character.tscn" id="3_b7his"]
 [ext_resource type="PackedScene" uid="uid://ddun1qv7qq44l" path="res://src/scenes/ui/config_bar/nature_option.tscn" id="3_hnssp"]
 
 [node name="ConfigBar" type="Node2D" unique_id=1876330842]
 script = ExtResource("1_6m3mh")
 
-[node name="Functions" type="Node2D" parent="." unique_id=224125868]
-
-[node name="ToutOption1" parent="Functions" unique_id=324958501 instance=ExtResource("2_b7his")]
-
-[node name="ToutOption2" parent="Functions" unique_id=288677071 instance=ExtResource("2_b7his")]
-position = Vector2(64, 0)
-
-[node name="ToutOption3" parent="Functions" unique_id=341199903 instance=ExtResource("2_b7his")]
-position = Vector2(128, 0)
-
-[node name="ToutOption4" parent="Functions" unique_id=499204149 instance=ExtResource("2_b7his")]
-position = Vector2(192, 0)
-
-[node name="ToutOption5" parent="Functions" unique_id=11018507 instance=ExtResource("2_b7his")]
-position = Vector2(256, 0)
-
-[node name="ToutOption6" parent="Functions" unique_id=1951553976 instance=ExtResource("2_b7his")]
-position = Vector2(320, 0)
-
 [node name="Natures" type="Node2D" parent="." unique_id=546007338]
 position = Vector2(0, 64)
 
+[node name="ColorRect" type="ColorRect" parent="Natures" unique_id=2085268333]
+process_mode = 4
+visible = false
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
+
+[node name="ColorRect2" type="ColorRect" parent="Natures" unique_id=1668902725]
+process_mode = 4
+visible = false
+offset_left = 37.0
+offset_top = -27.0
+offset_right = 91.0
+offset_bottom = 27.0
+
+[node name="ColorRect3" type="ColorRect" parent="Natures" unique_id=1049970597]
+process_mode = 4
+visible = false
+offset_left = 101.0
+offset_top = -27.0
+offset_right = 155.0
+offset_bottom = 27.0
+
+[node name="ColorRect4" type="ColorRect" parent="Natures" unique_id=155105045]
+process_mode = 4
+visible = false
+offset_left = 164.0
+offset_top = -27.0
+offset_right = 218.0
+offset_bottom = 27.0
+
+[node name="ColorRect5" type="ColorRect" parent="Natures" unique_id=845722868]
+process_mode = 4
+visible = false
+offset_left = 228.0
+offset_top = -27.0
+offset_right = 282.0
+offset_bottom = 27.0
+
+[node name="ColorRect6" type="ColorRect" parent="Natures" unique_id=638453468]
+process_mode = 4
+visible = false
+offset_left = 293.0
+offset_top = -27.0
+offset_right = 347.0
+offset_bottom = 27.0
+
 [node name="NatureOption1" parent="Natures" unique_id=1411791054 instance=ExtResource("3_hnssp")]
-nature = null
+scale = Vector2(1.43, 1.43)
 
 [node name="NatureOption2" parent="Natures" unique_id=538455491 instance=ExtResource("3_hnssp")]
 position = Vector2(64, 0)
-nature = null
+scale = Vector2(1.43, 1.43)
+nature = 1
 
 [node name="NatureOption3" parent="Natures" unique_id=1873674014 instance=ExtResource("3_hnssp")]
 position = Vector2(128, 0)
-nature = null
+scale = Vector2(1.43, 1.43)
+nature = 2
 
 [node name="NatureOption4" parent="Natures" unique_id=936436786 instance=ExtResource("3_hnssp")]
 position = Vector2(192, 0)
-nature = null
+scale = Vector2(1.43, 1.43)
+nature = 3
 
 [node name="NatureOption5" parent="Natures" unique_id=1952674696 instance=ExtResource("3_hnssp")]
 position = Vector2(256, 0)
-nature = null
+scale = Vector2(1.43, 1.43)
+nature = 4
 
 [node name="NatureOption6" parent="Natures" unique_id=529054017 instance=ExtResource("3_hnssp")]
 position = Vector2(320, 0)
-nature = null
+scale = Vector2(1.43, 1.43)
+nature = 5
+
+[node name="Functions" type="Node2D" parent="." unique_id=224125868]
+
+[node name="ToutAnimation" parent="Functions" unique_id=698907468 instance=ExtResource("3_b7his")]
+unique_name_in_owner = true
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(0, 32)
+scale = Vector2(0.018, 0.018)
+animation = &"moving"
+frame_progress = 0.0
+
+[node name="ToutAnimation2" parent="Functions" unique_id=182580577 instance=ExtResource("3_b7his")]
+unique_name_in_owner = true
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(64, 32)
+scale = Vector2(0.018, 0.018)
+animation = &"blocking"
+frame_progress = 0.0
+
+[node name="ToutAnimation3" parent="Functions" unique_id=1167436781 instance=ExtResource("3_b7his")]
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(128, 32)
+scale = Vector2(0.018, 0.018)
+frame_progress = 0.0
+
+[node name="ToutAnimation4" parent="Functions" unique_id=29999901 instance=ExtResource("3_b7his")]
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(192, 32)
+scale = Vector2(0.018, 0.018)
+animation = &"ending"
+frame_progress = 0.0
+
+[node name="ToutAnimation5" parent="Functions" unique_id=62268353 instance=ExtResource("3_b7his")]
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(256, 32)
+scale = Vector2(0.018, 0.018)
+animation = &"decoring"
+frame_progress = 0.0
+
+[node name="ToutAnimation6" parent="Functions" unique_id=2084983440 instance=ExtResource("3_b7his")]
+modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+position = Vector2(320, 32)
+scale = Vector2(0.018, 0.018)
+animation = &"collecting"
+frame_progress = 0.0

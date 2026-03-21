@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://em53cbci7feo" path="res://assets/art/characters/Cube_Perso_3.png" id="12_7ylay"]
 [ext_resource type="Texture2D" uid="uid://chnrhlwh61kyy" path="res://assets/art/characters/Cube_pique_2.png" id="12_tvvyj"]
 [ext_resource type="Texture2D" uid="uid://1tmgy70nqo6" path="res://assets/art/characters/Cube_Perso_2.png" id="13_tckyu"]
+[ext_resource type="Script" uid="uid://j2jwrs6icybo" path="res://src/scenes/tout/character.gd" id="16_tvvyj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yi3ec"]
 animations = [{
@@ -109,6 +110,8 @@ animations = [{
 }]
 
 [node name="ToutAnimations" type="AnimatedSprite2D" unique_id=698907468]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_yi3ec")
 animation = &"killing"
 frame_progress = 0.9340602
+script = ExtResource("16_tvvyj")

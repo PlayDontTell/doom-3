@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cditwqg0ylrk7" path="res://src/core/core_scenes/game/game.gd" id="1_dl4f6"]
 [ext_resource type="PackedScene" uid="uid://cfmvs4ijai7r8" path="res://src/scenes/ui/hud/pause_menu/pause_menu.tscn" id="2_6bt27"]
 [ext_resource type="Texture2D" uid="uid://ql3jgwai21mo" path="res://assets/art/background.png" id="3_20heu"]
+[ext_resource type="PackedScene" uid="uid://bdxa2sscdbvfl" path="res://src/scenes/ui/config_bar/config_bar.tscn" id="4_ch5uq"]
 
 [node name="Game" type="Node2D" unique_id=488682812]
 script = ExtResource("1_dl4f6")
@@ -13,3 +14,9 @@ visible = false
 [node name="Background" type="Sprite2D" parent="." unique_id=854025331]
 visible = false
 texture = ExtResource("3_20heu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1909995524]
+layer = 30
+
+[node name="ConfigBar" parent="CanvasLayer" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
+position = Vector2(496, 624)
