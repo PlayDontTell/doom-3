@@ -30,4 +30,4 @@ func _on_ending(_player: Tout) -> void:
 
 func change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
 	for tout: Tout in touts:
-		tout.change_mode(dict[tout.mode])
+		tout.change_mode(dict[tout.nature])
