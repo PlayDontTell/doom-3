@@ -39,12 +39,13 @@ disable_mode = 1
 process_mode = 4
 position = Vector2(144, 304)
 disable_mode = 1
+nature = 2
 
 [node name="Tout18" parent="." unique_id=619694613 instance=ExtResource("3_20heu")]
 process_mode = 4
 position = Vector2(176, 240)
 disable_mode = 1
-mode = 5
+nature = 5
 
 [node name="Tout10" parent="." unique_id=347376934 instance=ExtResource("3_20heu")]
 process_mode = 4
@@ -54,12 +55,12 @@ disable_mode = 1
 [node name="Tout11" parent="." unique_id=1498956516 instance=ExtResource("3_20heu")]
 position = Vector2(240, 336)
 disable_mode = 1
-mode = 0
+nature = 0
 
 [node name="Tout16" parent="." unique_id=1749909781 instance=ExtResource("3_20heu")]
 position = Vector2(272, 336)
 disable_mode = 1
-mode = 0
+nature = 0
 
 [node name="Tout5" parent="." unique_id=1897567910 instance=ExtResource("3_20heu")]
 process_mode = 4
@@ -80,7 +81,7 @@ disable_mode = 1
 process_mode = 4
 position = Vector2(496, 304)
 disable_mode = 1
-mode = 3
+nature = 3
 
 [node name="Tout6" parent="." unique_id=1882064834 instance=ExtResource("3_20heu")]
 process_mode = 4

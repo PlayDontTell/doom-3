@@ -22,31 +22,37 @@ enum Mode {
 	COLLECTING,
 }
 
-@export var mode: Mode = Mode.BLOCKING:
-	set(new_mode):
-		mode = new_mode
-		if collision_shape == null:
-			return
-		match mode:
-			Mode.BLOCKING:
-				collision_shape.debug_color = Color.PURPLE
-			Mode.KILLING:
-				collision_shape.debug_color = Color.RED
-			Mode.ENDING: 
-				collision_shape.debug_color = Color.YELLOW
-			Mode.DECORING: 
-				collision_shape.debug_color = Color.WHITE
-			Mode.COLLECTING: 
-				collision_shape.debug_color = Color.ROYAL_BLUE
-			Mode.MOVING:
-				collision_shape.debug_color = Color.BURLYWOOD
+var mode: Mode
+
+@export var nature: Mode = Mode.BLOCKING:
+	set(new_nature):
+		nature = new_nature
+		if Engine.is_editor_hint():
+			_set_sprite()
 
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		mode = mode
+		nature = nature
 		return
-	change_mode(mode)
+	change_mode(nature) # TODO en fonction du level
+	_set_sprite()
+
+
+func _set_sprite() -> void:
+	match nature:
+		Mode.BLOCKING:
+			$ToutAnimation.animation = "blocking"
+		Mode.KILLING:
+			$ToutAnimation.animation = "killing"
+		Mode.ENDING: 
+			$ToutAnimation.animation = "ending"
+		Mode.DECORING: 
+			$ToutAnimation.animation = "decoring"
+		Mode.COLLECTING: 
+			$ToutAnimation.animation = "collecting"
+		Mode.MOVING:
+			$ToutAnimation.animation = "moving"
 
 
 func _physics_process(delta: float) -> void:
@@ -104,7 +110,6 @@ func change_mode(new_mode: Mode) -> void:
 			disable_mode = CollisionObject2D.DISABLE_MODE_REMOVE
 			process_mode = Node.PROCESS_MODE_DISABLED
 		Mode.COLLECTING: 
-			collision_shape.debug_color = Color.ROYAL_BLUE
 			process_mode = Node.PROCESS_MODE_DISABLED
 			# TODO besoin d'un area
 		Mode.MOVING: pass

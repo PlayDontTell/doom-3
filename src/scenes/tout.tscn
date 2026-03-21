@@ -1,25 +1,10 @@
 [gd_scene format=3 uid="uid://wwl0b2jylh3b"]
 
 [ext_resource type="Script" uid="uid://cy7e12oetp1jh" path="res://src/scenes/tout.gd" id="1_6qxoj"]
-[ext_resource type="Texture2D" uid="uid://be7w6jc6sb30q" path="res://assets/art/characters/Cube_brique_1.png" id="2_yi3ec"]
-[ext_resource type="Texture2D" uid="uid://ctlw15mhtujh2" path="res://assets/art/characters/Cube_brique_2.png" id="3_aupvr"]
+[ext_resource type="PackedScene" uid="uid://do04p04xa8gkq" path="res://src/scenes/tout/character.tscn" id="2_3w5us"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slkx4"]
-size = Vector2(30, 30)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6qxoj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_yi3ec")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_aupvr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(31, 31)
 
 [node name="Tout" type="CharacterBody2D" unique_id=556554685]
 script = ExtResource("1_6qxoj")
@@ -27,5 +12,7 @@ script = ExtResource("1_6qxoj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040372213]
 shape = SubResource("RectangleShape2D_slkx4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=346613643]
-sprite_frames = SubResource("SpriteFrames_6qxoj")
+[node name="ToutAnimation" parent="." unique_id=698907468 instance=ExtResource("2_3w5us")]
+scale = Vector2(0.020806242, 0.020806244)
+animation = &"blocking"
+frame_progress = 0.0
