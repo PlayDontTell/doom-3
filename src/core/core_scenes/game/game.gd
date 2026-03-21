@@ -3,7 +3,7 @@ class_name Game extends Node2D
 var level: Level
 var current_level_number: int = 1
 
-const LAST_LEVEL = 2
+const LAST_LEVEL = 3
 
 func _ready() -> void:
 	_load_level(current_level_number)
@@ -21,4 +21,4 @@ func _on_ending() -> void:
 	if current_level_number == LAST_LEVEL:
 		return # TODO game over
 	current_level_number += 1
-	_load_level(current_level_number)
+	_load_level.call_deferred(current_level_number)
