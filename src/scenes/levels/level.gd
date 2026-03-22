@@ -9,6 +9,8 @@ class_name Level extends Node
 	Tout.Mode.COLLECTING,
 ]
 
+const tout_pack = preload("res://src/scenes/tout.tscn")
+
 var touts: 
 	get(): return $Touts.get_children()
 
@@ -38,5 +40,29 @@ func _on_ending(_player: Tout) -> void:
 
 
 func change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
+	var to_ungroup = []
+	var to_group = []
 	for tout: Tout in touts:
+		if tout.mode == Tout.Mode.MOVING and dict[tout.nature] != Tout.Mode.MOVING:
+			to_ungroup.push_back(tout)
+		if tout.mode != Tout.Mode.MOVING and dict[tout.nature] == Tout.Mode.MOVING:
+			to_group.push_back(tout)
 		tout.change_mode(dict[tout.nature])
+	
+	if not to_group.is_empty():
+		var group = to_group.pop_back()
+		for a: Tout in to_group:
+			a.get_child(0).reparent(group)
+			a.queue_free()
+	
+	if not to_ungroup.is_empty():
+		for toto: Tout in to_ungroup:
+			if toto.get_children().size() <= 1:
+				continue
+			for b: CollisionShape2D in toto.get_children():
+				var new_tout: Tout = tout_pack.instantiate()
+				new_tout.nature = toto.nature
+				new_tout.mode = toto.mode # TODO pas sur
+				$Touts.add_child(new_tout)
+				new_tout.global_position = b.global_position
+			toto.queue_free()

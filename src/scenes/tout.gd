@@ -14,7 +14,7 @@ signal killed(player: Tout)
 ## when a winning is touched
 signal end(player: Tout)
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionShape2D = $collision
 
 enum Mode {
 	MOVING,
@@ -43,6 +43,8 @@ func _ready() -> void:
 
 
 func _set_sprite() -> void:
+	if %ToutAnimation == null:
+		return
 	match nature:
 		Mode.BLOCKING: %ToutAnimation.animation = "blocking"
 		Mode.KILLING: %ToutAnimation.animation = "killing"

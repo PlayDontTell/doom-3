@@ -17,6 +17,9 @@ var is_selected : bool = true
 func _ready() -> void:
 	_draw_nature(nature)
 
+func setup() -> void:
+	base_head.position = position + Vector2(0, 35)
+
 
 func _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: int) -> void:
 	if InputManager.just_pressed("left_click"):

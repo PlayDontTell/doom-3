@@ -18,6 +18,14 @@ texture = ExtResource("3_20heu")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1909995524]
 layer = 30
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=130890848]
+process_mode = 4
+offset_left = -155.0
+offset_top = 653.0
+offset_right = 1479.0
+offset_bottom = 806.0
+color = Color(0, 0, 0, 0.3529412)
+
 [node name="ConfigBar" parent="CanvasLayer" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
 visible = false
 position = Vector2(496, 624)

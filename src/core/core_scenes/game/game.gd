@@ -5,7 +5,7 @@ var current_level_number: int = 1
 
 const LAST_LEVEL = 4
 const config_bar_pack = preload("res://src/scenes/ui/config_bar/config_bar.tscn")
-var config_bar: ConfigBar
+@onready var config_bar: ConfigBar = $CanvasLayer/ConfigBar
 
 func _ready() -> void:
 	_load_level(current_level_number)
@@ -13,7 +13,8 @@ func _ready() -> void:
 
 func _load_config_bar():
 	if config_bar != null:
-		config_bar.changed.disconnect(_on_change_modes)
+		if config_bar.changed.has_connections():
+			config_bar.changed.disconnect(_on_change_modes)
 		config_bar.queue_free()
 	config_bar = config_bar_pack.instantiate()
 	config_bar.changed.connect(_on_change_modes)
