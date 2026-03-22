@@ -56,8 +56,8 @@ uppercase = true
 [node name="CreditsTitle4" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1408925980]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 18
-text = "Andrea"
+theme_override_font_sizes/font_size = 15
+text = "Andrea Mori"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -65,7 +65,7 @@ uppercase = true
 [node name="CreditsTitle3" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1524830424]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 15
 text = "Ivan Voirol"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -74,7 +74,7 @@ uppercase = true
 [node name="CreditsTitle2" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=747345325]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 15
 text = "Quentin Jungo"
 horizontal_alignment = 1
 vertical_alignment = 1

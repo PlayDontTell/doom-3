@@ -5,7 +5,7 @@ var current_level_number: int = 1
 
 const LAST_LEVEL = 9
 const config_bar_pack = preload("res://src/scenes/ui/config_bar/config_bar.tscn")
-@onready var config_bar: ConfigBar = $CanvasLayer/ConfigBar
+@onready var config_bar: ConfigBar = $CanvasLayer/CenterContainer/Control/ConfigBar
 
 func _ready() -> void:
 	_load_level(current_level_number)
@@ -18,8 +18,7 @@ func _load_config_bar():
 		config_bar.queue_free()
 	config_bar = config_bar_pack.instantiate()
 	config_bar.changed.connect(_on_change_modes)
-	$CanvasLayer.add_child(config_bar)
-	config_bar.position = Vector2(496, 624)
+	$CanvasLayer/CenterContainer/Control.add_child(config_bar)
 	config_bar.setup(level.avalable_functions)
 
 

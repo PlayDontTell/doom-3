@@ -11,36 +11,36 @@ script = ExtResource("1_6m3mh")
 position = Vector2(0, 64)
 
 [node name="NatureOption1" parent="Natures" unique_id=1411791054 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation")
 
 [node name="NatureOption2" parent="Natures" unique_id=538455491 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(64, 0)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation2")
 nature = 1
 
 [node name="NatureOption3" parent="Natures" unique_id=1873674014 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(128, 0)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation3")
 nature = 2
 
 [node name="NatureOption4" parent="Natures" unique_id=936436786 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(192, 0)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation4")
 nature = 3
 
 [node name="NatureOption5" parent="Natures" unique_id=1952674696 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(256, 0)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation5")
 nature = 4
 
 [node name="NatureOption6" parent="Natures" unique_id=529054017 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(320, 0)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(2.09, 2.09)
 base_head = NodePath("../../Functions/ToutAnimation6")
 nature = 5
 
@@ -48,43 +48,43 @@ nature = 5
 
 [node name="ToutAnimation" parent="Functions" unique_id=698907468 instance=ExtResource("3_b7his")]
 unique_name_in_owner = true
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(0, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 animation = &"moving"
 frame_progress = 0.0
 
 [node name="ToutAnimation2" parent="Functions" unique_id=182580577 instance=ExtResource("3_b7his")]
 unique_name_in_owner = true
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(64, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 animation = &"blocking"
 frame_progress = 0.0
 
 [node name="ToutAnimation3" parent="Functions" unique_id=1167436781 instance=ExtResource("3_b7his")]
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(128, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 frame_progress = 0.0
 
 [node name="ToutAnimation4" parent="Functions" unique_id=29999901 instance=ExtResource("3_b7his")]
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(192, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 animation = &"ending"
 frame_progress = 0.0
 
 [node name="ToutAnimation5" parent="Functions" unique_id=62268353 instance=ExtResource("3_b7his")]
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(256, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 animation = &"decoring"
 frame_progress = 0.0
 
 [node name="ToutAnimation6" parent="Functions" unique_id=2084983440 instance=ExtResource("3_b7his")]
-modulate = Color(0.3764706, 0.3764706, 0.3764706, 1)
+modulate = Color(0.44484326, 0.44484332, 0.4448432, 0.90588236)
 position = Vector2(320, 32)
-scale = Vector2(0.018, 0.018)
+scale = Vector2(0.023, 0.023)
 animation = &"collecting"
 frame_progress = 0.0

@@ -20,15 +20,14 @@ layer = 30
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=130890848]
 process_mode = 4
-offset_left = -155.0
-offset_top = 653.0
-offset_right = 1479.0
-offset_bottom = 806.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -89.0
+grow_horizontal = 2
+grow_vertical = 0
 color = Color(0, 0, 0, 0.3529412)
-
-[node name="ConfigBar" parent="CanvasLayer" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
-visible = false
-position = Vector2(496, 624)
 
 [node name="Reset" type="Button" parent="CanvasLayer" unique_id=69836828]
 offset_left = 1191.0
@@ -36,5 +35,20 @@ offset_top = 10.0
 offset_right = 1270.0
 offset_bottom = 82.0
 text = "RESET"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=50075212]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer" unique_id=1176672405]
+layout_mode = 2
+
+[node name="ConfigBar" parent="CanvasLayer/CenterContainer/Control" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/Reset" to="." method="_on_reset_button_pressed"]

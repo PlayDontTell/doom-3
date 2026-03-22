@@ -55,6 +55,8 @@ func switch(option_a: NatureOption, option_b: NatureOption) -> void:
 	is_switching = false
 
 
+const SPACE = 90
+
 func setup(list: Array[Tout.Mode]) -> void:
 	var i = 0
 	for nature: NatureOption in nature_options_container.get_children():
@@ -62,6 +64,7 @@ func setup(list: Array[Tout.Mode]) -> void:
 			nature.hide()
 			nature.base_head.hide()
 		else:
-			nature.position = Vector2(i * 64, 0)
+			nature.position = Vector2(i * SPACE, 0)
 			nature.setup()
 			i += 1
+	self.position.x = -(i*SPACE/2)
