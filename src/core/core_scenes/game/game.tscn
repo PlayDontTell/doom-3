@@ -34,6 +34,7 @@ offset_left = 1191.0
 offset_top = 10.0
 offset_right = 1270.0
 offset_bottom = 82.0
+focus_mode = 0
 text = "RESET"
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=50075212]
