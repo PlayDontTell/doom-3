@@ -42,6 +42,10 @@ func _on_ending() -> void:
 	_load_level.call_deferred(current_level_number)
 
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("reset"):
+		_on_reset_button_pressed()
+
 func _on_reset_button_pressed() -> void:
 	_kill_current_level()
 	_load_level(current_level_number)

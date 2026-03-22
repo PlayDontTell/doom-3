@@ -34,6 +34,11 @@ process_mode = 4
 position = Vector2(560, 336)
 disable_mode = 1
 
+[node name="Tout18" parent="Touts" unique_id=5564156 instance=ExtResource("3_amq67")]
+process_mode = 4
+position = Vector2(592, 336)
+disable_mode = 1
+
 [node name="Tout20" parent="Touts" unique_id=1827732526 instance=ExtResource("3_amq67")]
 process_mode = 4
 position = Vector2(400, 336)
@@ -78,4 +83,9 @@ disable_mode = 1
 [node name="Tout34" parent="Touts" unique_id=1478108358 instance=ExtResource("3_amq67")]
 process_mode = 4
 position = Vector2(528, 272)
+disable_mode = 1
+
+[node name="Tout35" parent="Touts" unique_id=1370070485 instance=ExtResource("3_amq67")]
+process_mode = 4
+position = Vector2(560, 272)
 disable_mode = 1
