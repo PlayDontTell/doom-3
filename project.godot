@@ -14,7 +14,7 @@ markdown_book/docs_folder="res://docs"
 
 [application]
 
-config/name="Doom3"
+config/name="Un Platformer Normal"
 config/version="0.0.0"
 run/main_scene="uid://c4g2mrbdks3sb"
 config/features=PackedStringArray("4.6", "Forward Plus")

@@ -68,6 +68,7 @@ config = ExtResource("5_g6b8a")
 metadata/_custom_type_script = "uid://dvjgopdw7ubc1"
 
 [node name="SettingsBtn" type="Button" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1757971076]
+visible = false
 layout_mode = 2
 text = "MAIN_MENU_SETTINGS"
 expand_icon = true
@@ -84,6 +85,7 @@ config = ExtResource("5_g6b8a")
 metadata/_custom_type_script = "uid://dvjgopdw7ubc1"
 
 [node name="ExitBtn" type="Button" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1049543872]
+visible = false
 layout_mode = 2
 text = "MAIN_MENU_EXIT"
 expand_icon = true

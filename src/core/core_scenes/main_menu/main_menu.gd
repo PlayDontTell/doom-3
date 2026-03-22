@@ -41,10 +41,10 @@ func _ready() -> void:
 	}
 	_initial_state = initial_state
 	
-	if G.config.has_save_slots:
-		panel_main.play_requested.connect(go_to.bind(State.SAVE_SLOT_SELECTION))
-	else:
-		panel_main.play_requested.connect(_on_save_slot_selected)
+	#if G.config.has_save_slots:
+		#panel_main.play_requested.connect(go_to.bind(State.SAVE_SLOT_SELECTION))
+	#else:
+	panel_main.play_requested.connect(_on_save_slot_selected)
 	
 	panel_main.settings_requested.connect(go_to.bind(State.SETTINGS))
 	panel_main.credits_requested.connect(go_to.bind(State.CREDITS))
@@ -91,44 +91,7 @@ func update_save_lists() -> void:
 ##   - Show slot setup screen (if the slot is empty and needs configuration)
 ##   - Create a new save and start the game (if the slot is empty and needs no setup)
 func _on_save_slot_selected() -> void:
-	var has_save_slots : bool = G.config.has_save_slots
-	var manual_loading_enabled : bool = G.config.manual_loading_enabled
-	var save_slots_need_setup : bool = G.config.save_slots_need_setup
-	var has_saves_in_slot : bool = false
-	if SaveManager.save_data_list.has(SaveManager.current_save_slot):
-		has_saves_in_slot = SaveManager.save_data_list[SaveManager.current_save_slot].size() > 0
-	
-	if has_saves_in_slot:
-		# The selected slot already has save files.
-		
-		var has_only_one_save_available : bool = SaveManager.save_data_list[SaveManager.current_save_slot].size() == 1
-		var a_save_is_loaded : bool = not SaveManager.save_data._is_empty
-		# The player can create new save files if:
-		# - there are no save slots (flat list mode — always allowed), or
-		# - a save is already loaded (the player is resuming, not starting fresh)
-		var player_can_create_new_files : bool = not has_save_slots or a_save_is_loaded
-		
-		if manual_loading_enabled and (not has_only_one_save_available or player_can_create_new_files):
-			# Multiple saves to choose from, or the player can create new ones.
-			# Show the file selection screen so they can pick, delete, or create saves.
-			go_to(State.SAVE_FILE_SELECTION)
-		else:
-			# Either manual saving is off, or there's exactly one save and no ability
-			# to create more — just load the most recent file and start playing.
-			SaveManager.load_save_file(SaveManager.save_data_list[SaveManager.current_save_slot][0].file_path)
-			G.request_core_scene.emit(&"GAME")
-	
-	else:
-		# The selected slot is empty — no save files exist yet.
-		
-		if save_slots_need_setup and has_save_slots:
-			# The slot requires player configuration before first use
-			# (e.g. naming the slot, choosing difficulty, setting a seed).
-			go_to(State.SAVE_SLOT_CREATION)
-		else:
-			# No setup needed — create a fresh save file and start the game immediately.
-			await SaveManager.create_new_save()
-			G.request_core_scene.emit(&"GAME")
+	get_tree().change_scene_to_file("res://src/core/core_scenes/game/game.tscn")
 
 
 func _on_slot_creation_confirmed(slot_name: String) -> void:

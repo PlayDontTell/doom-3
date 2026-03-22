@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://bur6phiqbk2j5" path="res://assets/themes/default_game_theme/default_animated_button_config.tres" id="4_5ciuh"]
 
 [node name="CreditsScreen" type="Control" unique_id=232951889 node_paths=PackedStringArray("default_focus")]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,6 +49,33 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "CREDITS_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditsTitle4" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1408925980]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 18
+text = "Andrea"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditsTitle3" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1524830424]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 18
+text = "Ivan Voirol"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditsTitle2" type="Label" parent="VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=747345325]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 18
+text = "Quentin Jungo"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
