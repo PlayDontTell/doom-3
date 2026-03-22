@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bq4f6cr6mkgxd" path="res://addons/patate/scenes/game_manager.tscn" id="1_ha3o5"]
 [ext_resource type="Script" uid="uid://dhvw5iypq1yjf" path="res://src/core/core_scenes/game_manager.gd" id="1_i104u"]
+[ext_resource type="AudioStream" uid="uid://clk1lwaw224ti" path="res://assets/art/cats_on_mars.mp3" id="3_i104u"]
 
 [node name="GameManager" unique_id=1581936618 instance=ExtResource("1_ha3o5")]
 script = ExtResource("1_i104u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0" unique_id=1561596461]
+stream = ExtResource("3_i104u")
+autoplay = true
+parameters/looping = true

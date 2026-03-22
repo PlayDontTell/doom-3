@@ -10,7 +10,7 @@ func _setup_game() -> void:
 			"left_click",
 		],
 	)
-
+	$AudioStreamPlayer.play()
 
 func _reset_variables() -> void:
 	pass
