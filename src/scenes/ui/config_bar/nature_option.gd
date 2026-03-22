@@ -22,7 +22,7 @@ func setup() -> void:
 
 
 func _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: int) -> void:
-	if InputManager.just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click"):
 		click.emit(self)
 
 
