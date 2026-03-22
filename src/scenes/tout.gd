@@ -1,8 +1,8 @@
 @tool
 class_name Tout extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 200.0
+const JUMP_VELOCITY = -300.0
 const WIDTH: int = 32
 
 ## when a collectible is taken
@@ -38,7 +38,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		nature = nature
 		return
-	change_mode(nature) # TODO en fonction du level
+	change_mode(nature)
 	_set_sprite()
 
 
@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 			match collider.mode:
 				Mode.KILLING:
 					killed.emit(self) 
-				Mode.ENDING: 
+				Mode.ENDING:
 					end.emit(self)
 				Mode.COLLECTING:
 					collected.emit(collider)

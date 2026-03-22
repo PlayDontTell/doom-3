@@ -35,8 +35,12 @@ func _on_killed(player: Tout) -> void:
 	# TODO -> si plus qu'on seul, c'est cia !
 
 
-func _on_ending(_player: Tout) -> void:
-	end.emit()
+func _on_ending(player: Tout) -> void:
+	if player.nature == Tout.Mode.MOVING:
+		end.emit()
+	else:
+		# TODO animation "on ne peut pas gagner avec ca"
+		pass 
 
 
 func change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
