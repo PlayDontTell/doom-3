@@ -19,7 +19,10 @@ func _ready() -> void:
 	for nature_option: NatureOption in nature_options_container.get_children():
 		nature_option.click.connect(_on_click)
 
-func _on_click(option: NatureOption) -> void:
+func _on_click(option: NatureOption, is_selected: bool) -> void:
+	if not is_selected:
+		selected = null
+		return
 	if is_switching:
 		return
 	if selected == option:
@@ -29,8 +32,10 @@ func _on_click(option: NatureOption) -> void:
 		return
 	assert(selected is NatureOption)
 	switch(selected, option)
+	
 	selected.unselect()
 	option.unselect()
+	
 	selected = null
 
 
