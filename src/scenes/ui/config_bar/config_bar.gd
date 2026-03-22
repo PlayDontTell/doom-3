@@ -53,3 +53,10 @@ func switch(option_a: NatureOption, option_b: NatureOption) -> void:
 	await tween_a.finished
 	await tween_b.finished
 	is_switching = false
+
+
+func setup(list: Array[Tout.Mode]) -> void:
+	for nature: NatureOption in nature_options_container.get_children():
+		if not nature.nature in list:
+			nature.hide()
+			nature.base_head.hide()

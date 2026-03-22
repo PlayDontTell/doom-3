@@ -10,32 +10,38 @@ script = ExtResource("1_6m3mh")
 [node name="Natures" type="Node2D" parent="." unique_id=546007338]
 position = Vector2(0, 64)
 
-[node name="NatureOption1" parent="Natures" unique_id=1411791054 instance=ExtResource("3_hnssp")]
+[node name="NatureOption1" parent="Natures" unique_id=1411791054 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation")
 
-[node name="NatureOption2" parent="Natures" unique_id=538455491 instance=ExtResource("3_hnssp")]
+[node name="NatureOption2" parent="Natures" unique_id=538455491 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(64, 0)
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation2")
 nature = 1
 
-[node name="NatureOption3" parent="Natures" unique_id=1873674014 instance=ExtResource("3_hnssp")]
+[node name="NatureOption3" parent="Natures" unique_id=1873674014 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(128, 0)
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation3")
 nature = 2
 
-[node name="NatureOption4" parent="Natures" unique_id=936436786 instance=ExtResource("3_hnssp")]
+[node name="NatureOption4" parent="Natures" unique_id=936436786 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(192, 0)
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation4")
 nature = 3
 
-[node name="NatureOption5" parent="Natures" unique_id=1952674696 instance=ExtResource("3_hnssp")]
+[node name="NatureOption5" parent="Natures" unique_id=1952674696 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(256, 0)
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation5")
 nature = 4
 
-[node name="NatureOption6" parent="Natures" unique_id=529054017 instance=ExtResource("3_hnssp")]
+[node name="NatureOption6" parent="Natures" unique_id=529054017 node_paths=PackedStringArray("base_head") instance=ExtResource("3_hnssp")]
 position = Vector2(320, 0)
 scale = Vector2(1.43, 1.43)
+base_head = NodePath("../../Functions/ToutAnimation6")
 nature = 5
 
 [node name="Functions" type="Node2D" parent="." unique_id=224125868]

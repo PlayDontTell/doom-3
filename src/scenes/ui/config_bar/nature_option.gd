@@ -3,6 +3,8 @@ class_name NatureOption extends Area2D
 
 signal click(option: NatureOption)
 
+@export var base_head: Node2D
+
 @onready var tout_animation: AnimatedSprite2D = %ToutAnimation
 var is_selected : bool = true
 

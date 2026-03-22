@@ -6,6 +6,7 @@
 
 [node name="Level" type="Node2D" unique_id=488682812]
 script = ExtResource("1_rlll7")
+avalable_functions = Array[int]([])
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1371891682]
 position = Vector2(238, 270.00003)

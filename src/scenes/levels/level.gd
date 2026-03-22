@@ -1,5 +1,14 @@
 class_name Level extends Node
 
+@export var avalable_functions: Array[Tout.Mode] = [
+	Tout.Mode.MOVING,
+	Tout.Mode.BLOCKING,
+	Tout.Mode.KILLING,
+	Tout.Mode.ENDING,
+	Tout.Mode.DECORING,
+	Tout.Mode.COLLECTING,
+]
+
 var touts: 
 	get(): return $Touts.get_children()
 

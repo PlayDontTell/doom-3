@@ -19,6 +19,7 @@ func _load_config_bar():
 	config_bar.changed.connect(_on_change_modes)
 	$CanvasLayer.add_child(config_bar)
 	config_bar.position = Vector2(496, 624)
+	config_bar.setup(level.avalable_functions)
 
 
 func _load_level(number: int) -> void:
