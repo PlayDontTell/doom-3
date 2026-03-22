@@ -7,48 +7,57 @@
 [node name="Level" type="Node2D" unique_id=488682812]
 script = ExtResource("1_whqk8")
 avalable_functions = Array[int]([5, 0])
+allowed_nature_to_win = Array[int]([0, 5])
 
 [node name="Background" type="Sprite2D" parent="." unique_id=534284348]
 position = Vector2(237, 318)
 scale = Vector2(0.28958338, 0.2895833)
 texture = ExtResource("2_31yrn")
 
-[node name="Touts" type="Node2D" parent="." unique_id=387610169]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1683824006]
+position = Vector2(242, 316)
+zoom = Vector2(2.8, 2.8)
 
-[node name="Tout2" parent="Touts" unique_id=2033816981 instance=ExtResource("3_1ijv4")]
-process_mode = 4
-position = Vector2(144, 368)
-disable_mode = 1
-nature = 2
+[node name="Touts" type="Node2D" parent="." unique_id=387610169]
 
 [node name="Tout13" parent="Touts" unique_id=556554685 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(112, 368)
+position = Vector2(144, 368)
 disable_mode = 1
 
 [node name="Tout22" parent="Touts" unique_id=23153197 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(80, 368)
+position = Vector2(112, 368)
 disable_mode = 1
 
 [node name="Tout23" parent="Touts" unique_id=1907772140 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(48, 368)
+position = Vector2(80, 368)
 disable_mode = 1
 
 [node name="Tout19" parent="Touts" unique_id=1815611493 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(16, 368)
+position = Vector2(48, 368)
 disable_mode = 1
 
 [node name="Tout8" parent="Touts" unique_id=745671463 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(16, 336)
+position = Vector2(48, 336)
 disable_mode = 1
 
 [node name="Tout12" parent="Touts" unique_id=912778695 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(16, 304)
+position = Vector2(48, 304)
+disable_mode = 1
+
+[node name="Tout14" parent="Touts" unique_id=1962892274 instance=ExtResource("3_1ijv4")]
+process_mode = 4
+position = Vector2(144, 272)
+disable_mode = 1
+
+[node name="Tout20" parent="Touts" unique_id=1761233999 instance=ExtResource("3_1ijv4")]
+process_mode = 4
+position = Vector2(176, 272)
 disable_mode = 1
 
 [node name="Tout11" parent="Touts" unique_id=1498956516 instance=ExtResource("3_1ijv4")]
@@ -56,45 +65,30 @@ position = Vector2(400, 336)
 disable_mode = 1
 nature = 0
 
-[node name="Tout5" parent="Touts" unique_id=1897567910 instance=ExtResource("3_1ijv4")]
-process_mode = 4
-position = Vector2(432, 368)
-disable_mode = 1
-
-[node name="Tout14" parent="Touts" unique_id=1510374755 instance=ExtResource("3_1ijv4")]
-process_mode = 4
-position = Vector2(16, 272)
-disable_mode = 1
-
 [node name="Tout21" parent="Touts" unique_id=1209511995 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(112, 240)
+position = Vector2(176, 208)
 disable_mode = 1
 nature = 5
 
 [node name="Tout15" parent="Touts" unique_id=1901918233 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(464, 368)
+position = Vector2(432, 368)
 disable_mode = 1
 
 [node name="Tout16" parent="Touts" unique_id=42969153 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(464, 336)
+position = Vector2(432, 336)
 disable_mode = 1
 
 [node name="Tout18" parent="Touts" unique_id=329747071 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(464, 304)
-disable_mode = 1
-
-[node name="Tout20" parent="Touts" unique_id=1190434484 instance=ExtResource("3_1ijv4")]
-process_mode = 4
-position = Vector2(464, 272)
+position = Vector2(432, 304)
 disable_mode = 1
 
 [node name="Tout17" parent="Touts" unique_id=1863031439 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(48, 336)
+position = Vector2(80, 336)
 disable_mode = 1
 nature = 3
 
@@ -149,14 +143,9 @@ position = Vector2(304, 368)
 disable_mode = 1
 nature = 2
 
-[node name="Tout24" parent="Touts" unique_id=30364720 instance=ExtResource("3_1ijv4")]
-process_mode = 4
-position = Vector2(144, 400)
-disable_mode = 1
-
 [node name="Tout25" parent="Touts" unique_id=2036046616 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(112, 400)
+position = Vector2(144, 400)
 disable_mode = 1
 
 [node name="Tout26" parent="Touts" unique_id=339941107 instance=ExtResource("3_1ijv4")]
@@ -191,28 +180,24 @@ disable_mode = 1
 
 [node name="Tout30" parent="Touts" unique_id=1192996231 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(304, 176)
+position = Vector2(265, 243)
 disable_mode = 1
 nature = 4
 
 [node name="Tout31" parent="Touts" unique_id=1636777343 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(336, 176)
+position = Vector2(294, 238)
 disable_mode = 1
 nature = 4
 
 [node name="Tout32" parent="Touts" unique_id=957839271 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(336, 208)
+position = Vector2(285, 269)
 disable_mode = 1
 nature = 4
 
 [node name="Tout33" parent="Touts" unique_id=1397470946 instance=ExtResource("3_1ijv4")]
 process_mode = 4
-position = Vector2(368, 176)
+position = Vector2(314, 262)
 disable_mode = 1
 nature = 4
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1683824006]
-position = Vector2(240, 304)
-zoom = Vector2(2.63, 2.63)

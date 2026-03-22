@@ -8,6 +8,9 @@ class_name Level extends Node
 	Tout.Mode.DECORING,
 	Tout.Mode.COLLECTING,
 ]
+@export var allowed_nature_to_win: Array[Tout.Mode] = [
+	Tout.Mode.MOVING,
+]
 
 const tout_pack = preload("res://src/scenes/tout.tscn")
 
@@ -36,11 +39,11 @@ func _on_killed(player: Tout) -> void:
 
 
 func _on_ending(player: Tout) -> void:
-	if player.nature == Tout.Mode.MOVING:
+	if player.nature in allowed_nature_to_win:
 		end.emit()
 	else:
 		# TODO animation "on ne peut pas gagner avec ca"
-		pass 
+		pass
 
 
 func change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:

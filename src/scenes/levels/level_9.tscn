@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://dy51tn2yp0kc0"]
+
+[ext_resource type="Script" uid="uid://iosujkbc4ky6" path="res://src/scenes/levels/level.gd" id="1_scli8"]
+[ext_resource type="Texture2D" uid="uid://ql3jgwai21mo" path="res://assets/art/background.png" id="2_8mn3w"]
+[ext_resource type="PackedScene" uid="uid://wwl0b2jylh3b" path="res://src/scenes/tout.tscn" id="3_tonhk"]
+
+[node name="Level" type="Node2D" unique_id=488682812]
+script = ExtResource("1_scli8")
+avalable_functions = Array[int]([1, 2, 5])
+
+[node name="Background" type="Sprite2D" parent="." unique_id=534284348]
+position = Vector2(482, 230.5)
+scale = Vector2(0.29166672, 0.2916667)
+texture = ExtResource("2_8mn3w")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1683824006]
+position = Vector2(475, 247)
+zoom = Vector2(2.87, 2.87)
+
+[node name="Touts" type="Node2D" parent="." unique_id=387610169]
+
+[node name="Tout13" parent="Touts" unique_id=556554685 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(400, 336)
+disable_mode = 1
+
+[node name="Tout11" parent="Touts" unique_id=1498956516 instance=ExtResource("3_tonhk")]
+position = Vector2(336, 144)
+disable_mode = 1
+nature = 0
+
+[node name="Tout15" parent="Touts" unique_id=1901918233 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(464, 176)
+disable_mode = 1
+
+[node name="Tout20" parent="Touts" unique_id=1827732526 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(304, 176)
+disable_mode = 1
+
+[node name="Tout17" parent="Touts" unique_id=1863031439 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(400, 304)
+disable_mode = 1
+nature = 3
+
+[node name="Tout24" parent="Touts" unique_id=30364720 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(400, 176)
+disable_mode = 1
+
+[node name="Tout32" parent="Touts" unique_id=2089055614 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(368, 176)
+disable_mode = 1
+
+[node name="Tout42" parent="Touts" unique_id=586186346 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(400, 240)
+disable_mode = 1
+nature = 2
+
+[node name="Tout6" parent="Touts" unique_id=1021049837 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(432, 176)
+disable_mode = 1
+
+[node name="Tout47" parent="Touts" unique_id=546438562 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(336, 176)
+disable_mode = 1
+
+[node name="Tout21" parent="Touts" unique_id=2002989533 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(496, 176)
+disable_mode = 1
+
+[node name="Tout26" parent="Touts" unique_id=1026918712 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(592, 176)
+disable_mode = 1
+
+[node name="Tout33" parent="Touts" unique_id=541558733 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(560, 176)
+disable_mode = 1
+
+[node name="Tout7" parent="Touts" unique_id=1222400112 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(624, 176)
+disable_mode = 1
+
+[node name="Tout48" parent="Touts" unique_id=1555542453 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(528, 176)
+disable_mode = 1
+
+[node name="Tout18" parent="Touts" unique_id=834602362 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(464, 272)
+disable_mode = 1
+
+[node name="Tout22" parent="Touts" unique_id=588551842 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(368, 240)
+disable_mode = 1
+nature = 2
+
+[node name="Tout27" parent="Touts" unique_id=562903272 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(400, 272)
+disable_mode = 1
+
+[node name="Tout35" parent="Touts" unique_id=111029141 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(368, 272)
+disable_mode = 1
+
+[node name="Tout8" parent="Touts" unique_id=1414653069 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(432, 272)
+disable_mode = 1
+
+[node name="Tout49" parent="Touts" unique_id=1588656325 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(336, 272)
+disable_mode = 1
+
+[node name="Tout23" parent="Touts" unique_id=1420081971 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(496, 272)
+disable_mode = 1
+
+[node name="Tout28" parent="Touts" unique_id=815742210 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(592, 272)
+disable_mode = 1
+
+[node name="Tout36" parent="Touts" unique_id=357662468 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(560, 272)
+disable_mode = 1
+
+[node name="Tout50" parent="Touts" unique_id=1181873957 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(528, 272)
+disable_mode = 1
+
+[node name="Tout34" parent="Touts" unique_id=1478108358 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(432, 240)
+disable_mode = 1
+nature = 2
+
+[node name="Tout43" parent="Touts" unique_id=436638349 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(528, 208)
+disable_mode = 1
+nature = 5
+
+[node name="Tout25" parent="Touts" unique_id=1288959025 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(496, 208)
+disable_mode = 1
+nature = 5
+
+[node name="Tout37" parent="Touts" unique_id=1634400874 instance=ExtResource("3_tonhk")]
+process_mode = 4
+position = Vector2(560, 208)
+disable_mode = 1
+nature = 5

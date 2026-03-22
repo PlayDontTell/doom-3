@@ -3,7 +3,7 @@ class_name Game extends Node2D
 var level: Level
 var current_level_number: int = 1
 
-const LAST_LEVEL = 4
+const LAST_LEVEL = 9
 const config_bar_pack = preload("res://src/scenes/ui/config_bar/config_bar.tscn")
 @onready var config_bar: ConfigBar = $CanvasLayer/ConfigBar
 
