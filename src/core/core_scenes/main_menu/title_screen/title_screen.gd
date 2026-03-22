@@ -27,3 +27,7 @@ func _on_credits_btn_pressed() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	exit_dialog_requested.emit()
+
+
+func _on_texture_button_pressed() -> void:
+	play_requested.emit()
