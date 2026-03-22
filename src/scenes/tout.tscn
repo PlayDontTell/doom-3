@@ -12,7 +12,7 @@ script = ExtResource("1_6qxoj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040372213]
 shape = SubResource("RectangleShape2D_slkx4")
 
-[node name="ToutAnimation" parent="." unique_id=698907468 instance=ExtResource("2_3w5us")]
+[node name="ToutAnimation" parent="CollisionShape2D" unique_id=698907468 instance=ExtResource("2_3w5us")]
 unique_name_in_owner = true
 scale = Vector2(0.020806242, 0.020806244)
 animation = &"blocking"

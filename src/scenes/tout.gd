@@ -44,18 +44,12 @@ func _ready() -> void:
 
 func _set_sprite() -> void:
 	match nature:
-		Mode.BLOCKING:
-			$ToutAnimation.animation = "blocking"
-		Mode.KILLING:
-			$ToutAnimation.animation = "killing"
-		Mode.ENDING: 
-			$ToutAnimation.animation = "ending"
-		Mode.DECORING: 
-			$ToutAnimation.animation = "decoring"
-		Mode.COLLECTING: 
-			$ToutAnimation.animation = "collecting"
-		Mode.MOVING:
-			$ToutAnimation.animation = "moving"
+		Mode.BLOCKING: %ToutAnimation.animation = "blocking"
+		Mode.KILLING: %ToutAnimation.animation = "killing"
+		Mode.ENDING: %ToutAnimation.animation = "ending"
+		Mode.DECORING: %ToutAnimation.animation = "decoring"
+		Mode.COLLECTING: %ToutAnimation.animation = "collecting"
+		Mode.MOVING: %ToutAnimation.animation = "moving"
 
 
 func _physics_process(delta: float) -> void:
