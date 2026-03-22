@@ -18,9 +18,10 @@ const tout_pack = preload("res://src/scenes/tout.tscn")
 var touts: 
 	get(): return $Touts.get_children()
 
-var collected: int = 0
+var _collected: int = 0
 
 signal end
+signal collected
 
 func _ready() -> void:
 	for tout: Tout in touts:
@@ -31,7 +32,8 @@ func _ready() -> void:
 
 func _on_collected(collectible: Tout) -> void:
 	collectible.queue_free()
-	collected += 1
+	_collected += 1
+	collected.emit()
 
 
 func _on_killed(player: Tout) -> void:

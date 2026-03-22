@@ -3,7 +3,7 @@ class_name Game extends Node2D
 var level: Level
 var current_level_number: int = 1
 
-const LAST_LEVEL = 9
+const LAST_LEVEL = 10
 const config_bar_pack = preload("res://src/scenes/ui/config_bar/config_bar.tscn")
 @onready var config_bar: ConfigBar = $CanvasLayer/CenterContainer/Control/ConfigBar
 
@@ -23,28 +23,49 @@ func _load_config_bar():
 
 
 func _load_level(number: int) -> void:
+	$CanvasLayer/n_collect_label.text = '0x'
 	var _level: PackedScene =  load("res://src/scenes/levels/level_"+str(number)+".tscn")
 	level = _level.instantiate()
 	add_child(level)
 	level.end.connect(_on_ending)
+	level.collected.connect(_on_collect)
 	_load_config_bar()
 	if level.show_tuto:
 		%Tuto.show()
 	else:
 		%Tuto.hide()
 
+var total_collected: int = 0
+
+func _on_collect() -> void:
+	$CanvasLayer/n_collect_label.text = str(level._collected) + 'x'
+	#_collected += 1
+	#pass
 
 func _on_ending() -> void:
+	total_collected += level._collected
 	_kill_current_level()
 	if current_level_number == LAST_LEVEL:
+		show_end()
 		return # TODO game over
 	current_level_number += 1
 	_load_level.call_deferred(current_level_number)
 
 
+func show_end():
+	$CanvasLayer/end/n_collect_label.text = str(total_collected) + 'x'
+	$CanvasLayer/end.show()
+	$CanvasLayer/ToutAnimations.hide()
+	$CanvasLayer/collected.hide()
+	$CanvasLayer/n_collect_label.hide()
+	$CanvasLayer/CenterContainer.hide()
+	$CanvasLayer/Reset.hide()
+	$CanvasLayer/ColorRect.hide()
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset"):
 		_on_reset_button_pressed()
+
 
 func _on_reset_button_pressed() -> void:
 	_kill_current_level()
@@ -56,6 +77,7 @@ func _kill_current_level() -> void:
 		return
 	level.end.disconnect(_on_ending)
 	level.queue_free()
+	$CanvasLayer/n_collect_label.text = '0x'
 
 
 func _on_change_modes(dict: Dictionary[Tout.Mode, Tout.Mode]) -> void:
