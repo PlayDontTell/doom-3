@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cv2e118qwelr6"]
+
+[ext_resource type="Script" uid="uid://43bmh7k7ojp5" path="res://music.gd" id="1_5vxup"]
+[ext_resource type="AudioStream" uid="uid://clk1lwaw224ti" path="res://assets/art/cats_on_mars.mp3" id="2_w5q55"]
+
+[node name="Music" type="Node" unique_id=160538182]
+script = ExtResource("1_5vxup")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1618709313]
+stream = ExtResource("2_w5q55")
+autoplay = true
+parameters/looping = true
