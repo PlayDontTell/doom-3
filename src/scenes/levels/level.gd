@@ -38,8 +38,9 @@ func _on_killed(player: Tout) -> void:
 	# TODO -> si plus qu'on seul, c'est cia !
 
 
-func _on_ending(player: Tout) -> void:
-	if player.nature in allowed_nature_to_win:
+func _on_ending(player: Tout, touched: Tout) -> void:
+	var is_proper_ending = touched.nature == Tout.Mode.ENDING and touched.mode == Tout.Mode.ENDING
+	if is_proper_ending and player.nature in allowed_nature_to_win:
 		end.emit()
 	else:
 		# TODO animation "on ne peut pas gagner avec ca"

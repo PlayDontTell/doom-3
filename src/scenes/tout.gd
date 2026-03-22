@@ -12,7 +12,7 @@ signal collected(collectible: Tout)
 signal killed(player: Tout)
 
 ## when a winning is touched
-signal end(player: Tout)
+signal end(player: Tout, touched: Tout)
 
 @onready var collision_shape: CollisionShape2D = $collision
 
@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 				Mode.KILLING:
 					killed.emit(self) 
 				Mode.ENDING:
-					end.emit(self)
+					end.emit(self, collider)
 				Mode.COLLECTING:
 					collected.emit(collider)
 				Mode.BLOCKING, Mode.MOVING, Mode.DECORING: pass
