@@ -28,6 +28,10 @@ func _load_level(number: int) -> void:
 	add_child(level)
 	level.end.connect(_on_ending)
 	_load_config_bar()
+	if level.show_tuto:
+		%Tuto.show()
+	else:
+		%Tuto.hide()
 
 
 func _on_ending() -> void:

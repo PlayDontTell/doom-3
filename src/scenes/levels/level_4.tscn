@@ -8,6 +8,7 @@
 script = ExtResource("1_whqk8")
 avalable_functions = Array[int]([5, 0])
 allowed_nature_to_win = Array[int]([0, 5])
+show_tuto = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=534284348]
 position = Vector2(237, 318)

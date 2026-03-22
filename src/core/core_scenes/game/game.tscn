@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://cditwqg0ylrk7" path="res://src/core/core_scenes/game/game.gd" id="1_dl4f6"]
 [ext_resource type="PackedScene" uid="uid://cfmvs4ijai7r8" path="res://src/scenes/ui/hud/pause_menu/pause_menu.tscn" id="2_6bt27"]
 [ext_resource type="Texture2D" uid="uid://ql3jgwai21mo" path="res://assets/art/background.png" id="3_20heu"]
+[ext_resource type="Theme" uid="uid://7ulrlyfv85ax" path="res://assets/themes/default_game_theme/default_game_theme.tres" id="4_c8nm8"]
 [ext_resource type="PackedScene" uid="uid://bdxa2sscdbvfl" path="res://src/scenes/ui/config_bar/config_bar.tscn" id="4_ch5uq"]
+[ext_resource type="Texture2D" uid="uid://cclgihd54rr03" path="res://assets/art/ui/temp/board-game-icons/PNG/Default (64px)/arrow_right.png" id="5_umep0"]
 
 [node name="Game" type="Node2D" unique_id=488682812]
 script = ExtResource("1_dl4f6")
@@ -29,14 +31,6 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.3529412)
 
-[node name="Reset" type="Button" parent="CanvasLayer" unique_id=69836828]
-offset_left = 1191.0
-offset_top = 10.0
-offset_right = 1270.0
-offset_bottom = 82.0
-focus_mode = 0
-text = "RESET"
-
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=50075212]
 anchors_preset = 12
 anchor_top = 1.0
@@ -50,6 +44,34 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="ConfigBar" parent="CanvasLayer/CenterContainer/Control" unique_id=1876330842 instance=ExtResource("4_ch5uq")]
-visible = false
+
+[node name="Tuto" type="Sprite2D" parent="CanvasLayer/CenterContainer/Control" unique_id=1523052328]
+unique_name_in_owner = true
+position = Vector2(-185.09, 62.65)
+texture = ExtResource("5_umep0")
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Control/Tuto" unique_id=1633748772]
+offset_left = -243.046
+offset_top = -11.385864
+offset_right = -34.046005
+offset_bottom = 11.614136
+text = "Échangez leurs 2 fonctions "
+
+[node name="Reset" type="Button" parent="CanvasLayer" unique_id=69836828]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -83.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("4_c8nm8")
+text = "RESET
+(R)"
 
 [connection signal="pressed" from="CanvasLayer/Reset" to="." method="_on_reset_button_pressed"]

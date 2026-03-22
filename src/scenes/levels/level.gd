@@ -11,6 +11,7 @@ class_name Level extends Node
 @export var allowed_nature_to_win: Array[Tout.Mode] = [
 	Tout.Mode.MOVING,
 ]
+@export var show_tuto = false
 
 const tout_pack = preload("res://src/scenes/tout.tscn")
 
